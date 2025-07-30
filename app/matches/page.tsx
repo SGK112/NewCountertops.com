@@ -153,24 +153,24 @@ export default function MatchesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-white">
+    <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-md mx-auto px-4 py-3">
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-lg font-bold text-pink-500">
+            <Link href="/" className="text-lg font-bold text-slate-900">
               NewCountertops
             </Link>
             <div className="flex items-center space-x-4">
               <Link href="/matches/liked" className="relative">
-                <Heart className="w-6 h-6 text-gray-600" />
+                <Heart className="w-6 h-6 text-slate-600" />
                 {likedContractors.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center border border-white">
                     {likedContractors.length}
                   </span>
                 )}
               </Link>
-              <button className="text-gray-600">
+              <button className="text-slate-600">
                 <MessageCircle className="w-6 h-6" />
               </button>
             </div>
@@ -182,14 +182,14 @@ export default function MatchesPage() {
       <div className="max-w-md mx-auto px-4 py-6">
         {/* Match Score */}
         <div className="text-center mb-4">
-          <div className="inline-flex items-center bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+          <div className="inline-flex items-center bg-emerald-50 text-emerald-700 px-4 py-2 rounded-lg text-sm font-semibold border border-emerald-200">
             <Star className="w-4 h-4 mr-1 fill-current" />
             {currentContractor.matchScore}% Match
           </div>
         </div>
 
         {/* Contractor Card */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-6 relative">
+        <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mb-6 relative">
           {/* Profile Image */}
           <div className="relative h-96">
             <img
@@ -197,18 +197,18 @@ export default function MatchesPage() {
               alt={currentContractor.name}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
             
             {/* Overlay Info */}
             <div className="absolute bottom-4 left-4 right-4 text-white">
               <h2 className="text-2xl font-bold mb-1">{currentContractor.name}</h2>
               <p className="text-lg mb-2">{currentContractor.businessName}</p>
               <div className="flex items-center space-x-4 text-sm">
-                <div className="flex items-center">
+                <div className="flex items-center bg-white/20 rounded-full px-2 py-1">
                   <Star className="w-4 h-4 fill-current mr-1" />
                   {currentContractor.rating} ({currentContractor.reviewCount})
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center bg-white/20 rounded-full px-2 py-1">
                   <MapPin className="w-4 h-4 mr-1" />
                   {currentContractor.distance}
                 </div>
@@ -252,14 +252,14 @@ export default function MatchesPage() {
             </div>
 
             {/* Availability */}
-            <div className="bg-green-50 p-3 rounded-lg">
+            <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-sm font-medium text-green-800">
-                    <Calendar className="w-4 h-4 inline mr-1" />
+                  <div className="text-sm font-semibold text-emerald-800">
+                    <Calendar className="w-4 h-4 inline mr-2" />
                     {currentContractor.availability}
                   </div>
-                  <div className="text-xs text-green-600">
+                  <div className="text-xs text-emerald-600 mt-1">
                     Responds in {currentContractor.responseTime}
                   </div>
                 </div>
@@ -268,28 +268,28 @@ export default function MatchesPage() {
 
             {/* Description */}
             <div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-slate-700 text-sm leading-relaxed">
                 {currentContractor.description}
               </p>
             </div>
 
             {/* Portfolio Preview */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Recent Work:</h3>
-              <div className="flex space-x-2">
+              <h3 className="font-semibold text-slate-900 mb-3">Recent Work:</h3>
+              <div className="flex space-x-3">
                 {currentContractor.portfolioImages.slice(0, 2).map((image, index) => (
                   <img
                     key={index}
                     src={image}
                     alt="Portfolio"
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-20 h-20 object-cover rounded-lg border border-slate-200"
                   />
                 ))}
                 <Link
                   href={`/contractors/${currentContractor.id}`}
-                  className="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500"
+                  className="w-20 h-20 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:bg-slate-100 transition-colors"
                 >
-                  <span className="text-xs">View All</span>
+                  <span className="text-xs font-medium">View All</span>
                 </Link>
               </div>
             </div>
@@ -297,19 +297,19 @@ export default function MatchesPage() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-6">
           <button
             onClick={handlePass}
-            className="w-16 h-16 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center shadow-lg hover:border-gray-400 transition-colors"
+            className="w-14 h-14 bg-white border-2 border-slate-300 hover:border-slate-400 rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-all"
           >
-            <X className="w-8 h-8 text-gray-500" />
+            <X className="w-7 h-7 text-slate-500" />
           </button>
           
           <button
             onClick={handleLike}
-            className="w-20 h-20 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center shadow-lg hover:from-pink-600 hover:to-red-600 transition-all transform hover:scale-105"
+            className="w-16 h-16 bg-blue-600 hover:bg-blue-700 border-2 border-blue-600 hover:border-blue-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all"
           >
-            <Heart className="w-10 h-10 text-white fill-current" />
+            <Heart className="w-8 h-8 text-white fill-current" />
           </button>
         </div>
 

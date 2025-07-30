@@ -1,481 +1,323 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
-import { User, Mail, Phone, MapPin, Lock, Eye, EyeOff, Building, Award, DollarSign, Upload } from 'lucide-react'
+import { Check, Star, TrendingUp, Shield, Users, DollarSign } from 'lucide-react'
 
 export default function ContractorSignupPage() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    businessName: '',
-    businessAddress: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    password: '',
-    confirmPassword: '',
-    yearsExperience: '',
-    specialties: [] as string[],
-    licenseNumber: '',
-    insuranceInfo: '',
-    website: '',
-    priceRange: '',
-    description: ''
-  })
-
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [currentStep, setCurrentStep] = useState(1)
-
-  const specialtiesList = [
-    'Kitchen Remodeling',
-    'Bathroom Remodeling',
-    'Granite Installation',
-    'Quartz Countertops',
-    'Marble Work',
-    'Custom Fabrication',
-    'Outdoor Kitchens',
-    'Commercial Projects',
-    'Restoration Services'
-  ]
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleSpecialtyToggle = (specialty: string) => {
-    setFormData(prev => ({
-      ...prev,
-      specialties: prev.specialties.includes(specialty)
-        ? prev.specialties.filter(s => s !== specialty)
-        : [...prev.specialties, specialty]
-    }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Contractor signup:', formData)
-    // Handle signup logic here
-  }
-
-  const nextStep = () => {
-    if (currentStep < 4) setCurrentStep(currentStep + 1)
-  }
-
-  const prevStep = () => {
-    if (currentStep > 1) setCurrentStep(currentStep - 1)
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-block mb-6">
-            <div className="flex items-center justify-center space-x-2">
-              <div className="w-8 h-8">
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="4" y="12" width="24" height="4" rx="1" fill="#3b82f6"/>
-                  <rect x="4" y="16" width="24" height="3" rx="0.5" fill="#1e3a8a" opacity="0.7"/>
-                  <circle cx="24" cy="13.5" r="1.5" fill="#f59e0b" opacity="0.8"/>
-                </svg>
-              </div>
-              <span className="text-xl font-bold text-blue-600">NewCountertops.com</span>
-            </div>
-          </Link>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Join as a Contractor</h1>
-          <p className="text-gray-600 text-sm">Connect with homeowners and grow your business</p>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium text-orange-600">Step {currentStep} of 4</span>
-            <span className="text-xs text-gray-500">{Math.round((currentStep / 4) * 100)}% Complete</span>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Hero Section */}
+      <div className="pt-20 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Join the Premier Network of
+              <span className="block text-blue-600">Stone & Surface Contractors</span>
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Connect with qualified homeowners, grow your business, and earn more with our autonomous lead generation platform.
+              <span className="block mt-2 font-semibold text-gray-800">No upfront costs. Only pay when you succeed.</span>
+            </p>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-orange-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(currentStep / 4) * 100}%` }}
-            />
-          </div>
-        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow-lg">
-          {/* Step 1: Personal Info */}
-          {currentStep === 1 && (
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Personal Information</h2>
-              
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                      placeholder="John"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="Smith"
-                    required
-                  />
-                </div>
+          {/* Value Proposition Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-green-600" />
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="john@contractorbusiness.com"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="(555) 123-4567"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    name="password"
-                    value={formData.password}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="Create a strong password"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                  >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type={showConfirmPassword ? 'text' : 'password'}
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="Confirm your password"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                  >
-                    {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Increase Revenue 40%+</h3>
+              <p className="text-gray-600">Our contractors average $15,000+ additional monthly revenue within 90 days.</p>
             </div>
-          )}
-
-          {/* Step 2: Business Info */}
-          {currentStep === 2 && (
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Business Information</h2>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Business Name</label>
-                <div className="relative">
-                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type="text"
-                    name="businessName"
-                    value={formData.businessName}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="Smith Granite Works"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Business Address</label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type="text"
-                    name="businessAddress"
-                    value={formData.businessAddress}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="1234 Main Street"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
-                  <input
-                    type="text"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="Phoenix"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
-                  <input
-                    type="text"
-                    name="state"
-                    value={formData.state}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    placeholder="AZ"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">ZIP Code</label>
-                <input
-                  type="text"
-                  name="zipCode"
-                  value={formData.zipCode}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                  placeholder="85001"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Website (Optional)</label>
-                <input
-                  type="url"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                  placeholder="www.smithgranite.com"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Experience & Specialties */}
-          {currentStep === 3 && (
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Experience & Specialties</h2>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
-                <div className="relative">
-                  <Award className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <select
-                    name="yearsExperience"
-                    value={formData.yearsExperience}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    required
-                  >
-                    <option value="">Select experience</option>
-                    <option value="1-3">1-3 years</option>
-                    <option value="4-7">4-7 years</option>
-                    <option value="8-15">8-15 years</option>
-                    <option value="16-25">16-25 years</option>
-                    <option value="25+">25+ years</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Specialties (Select all that apply)</label>
-                <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
-                  {specialtiesList.map((specialty) => (
-                    <label key={specialty} className="flex items-center space-x-2 text-sm">
-                      <input
-                        type="checkbox"
-                        checked={formData.specialties.includes(specialty)}
-                        onChange={() => handleSpecialtyToggle(specialty)}
-                        className="rounded text-orange-500 focus:ring-orange-500"
-                      />
-                      <span className="text-gray-700">{specialty}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Price Range</label>
-                <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <select
-                    name="priceRange"
-                    value={formData.priceRange}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                    required
-                  >
-                    <option value="">Select price range</option>
-                    <option value="$">$ - Budget Friendly</option>
-                    <option value="$$">$$ - Moderate</option>
-                    <option value="$$$">$$$ - Premium</option>
-                    <option value="$$$$">$$$$ - Luxury</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">License Number (Optional)</label>
-                <input
-                  type="text"
-                  name="licenseNumber"
-                  value={formData.licenseNumber}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                  placeholder="ROC #123456"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Step 4: Business Description */}
-          {currentStep === 4 && (
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Tell us about your business</h2>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Business Description</label>
-                <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                  placeholder="Describe your business, experience, and what makes you unique..."
-                  required
-                />
-                <p className="text-xs text-gray-500 mt-1">This will appear on your profile. Make it compelling!</p>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Insurance Information</label>
-                <input
-                  type="text"
-                  name="insuranceInfo"
-                  value={formData.insuranceInfo}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
-                  placeholder="Insurance company and policy info"
-                />
-              </div>
-
-              <div className="bg-orange-50 p-3 rounded-lg">
-                <p className="text-xs text-orange-800">
-                  <strong>Next steps:</strong> After registration, you'll be able to upload portfolio photos, 
-                  set your availability, and start receiving leads from potential customers.
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Navigation Buttons */}
-          <div className="flex justify-between pt-4">
-            {currentStep > 1 && (
-              <button
-                type="button"
-                onClick={prevStep}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                Previous
-              </button>
-            )}
             
-            {currentStep < 4 ? (
-              <button
-                type="button"
-                onClick={nextStep}
-                className="ml-auto px-6 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors"
-              >
-                Next Step
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className="ml-auto px-6 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors"
-              >
-                Create Contractor Account
-              </button>
-            )}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Pre-Qualified Leads</h3>
+              <p className="text-gray-600">Every lead is verified, budget-qualified, and ready to start their project.</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Payment Protection</h3>
+              <p className="text-gray-600">Secure escrow system ensures you get paid for every completed project.</p>
+            </div>
           </div>
-        </form>
+        </div>
+      </div>
 
-        {/* Footer */}
-        <div className="text-center mt-6">
-          <p className="text-sm text-gray-600">
-            Looking to hire a contractor?{' '}
-            <Link href="/signup" className="text-blue-600 hover:text-blue-700 font-medium">
-              Sign up as a homeowner
-            </Link>
+      {/* Pricing Plans */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Choose Your Growth Plan
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Start free, upgrade as you grow. All plans include our commission-based success model.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Starter Plan */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 relative">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+                <div className="text-4xl font-bold text-gray-900 mb-1">Free</div>
+                <p className="text-gray-600">Perfect for getting started</p>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">Basic profile listing</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">Up to 5 project photos</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">Customer reviews display</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">5% commission on projects</span>
+                </li>
+              </ul>
+              
+              <button className="w-full bg-gray-900 text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                Start Free Today
+              </button>
+            </div>
+
+            {/* Professional Plan - Most Popular */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-8 relative transform scale-105">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                  MOST POPULAR
+                </span>
+              </div>
+              
+              <div className="text-center mb-8 text-white">
+                <h3 className="text-2xl font-bold mb-2">Professional</h3>
+                <div className="text-4xl font-bold mb-1">$149<span className="text-xl font-normal">/mo</span></div>
+                <p className="text-blue-100">For growing businesses</p>
+              </div>
+              
+              <ul className="space-y-4 mb-8 text-white">
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-yellow-400 mr-3 flex-shrink-0" />
+                  <span>Enhanced profile with priority placement</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-yellow-400 mr-3 flex-shrink-0" />
+                  <span>Unlimited project photos & videos</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-yellow-400 mr-3 flex-shrink-0" />
+                  <span>Direct customer contact info</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-yellow-400 mr-3 flex-shrink-0" />
+                  <span>Lead analytics dashboard</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-yellow-400 mr-3 flex-shrink-0" />
+                  <span><strong>3% commission</strong> on projects</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-yellow-400 mr-3 flex-shrink-0" />
+                  <span>Verified contractor badge</span>
+                </li>
+              </ul>
+              
+              <button className="w-full bg-white text-blue-600 py-3 px-6 rounded-lg font-bold hover:bg-gray-50 transition-colors">
+                Start 14-Day Free Trial
+              </button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 relative">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                <div className="text-4xl font-bold text-gray-900 mb-1">$299<span className="text-xl font-normal">/mo</span></div>
+                <p className="text-gray-600">For established contractors</p>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">Everything in Professional</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">Geographic exclusivity</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">CRM integration</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">White-label proposals</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700"><strong>2% commission</strong> on projects</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">Dedicated account manager</span>
+                </li>
+              </ul>
+              
+              <button className="w-full bg-gray-900 text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                Contact Sales
+              </button>
+            </div>
+          </div>
+
+          {/* Commission Model Explanation */}
+          <div className="mt-16 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-200">
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <DollarSign className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Success-Based Model</h3>
+              <p className="text-lg text-gray-700 mb-6">
+                We only make money when you make money. Our commission is automatically deducted from completed project payments through our secure escrow system.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">$0</div>
+                  <p className="text-gray-600">Setup Fees</p>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">$0</div>
+                  <p className="text-gray-600">Hidden Costs</p>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
+                  <p className="text-gray-600">Automated System</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Success Stories */}
+      <div className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Real Results from Real Contractors
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex items-center mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+                  alt="Mike Johnson"
+                  className="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Mike Johnson</h4>
+                  <p className="text-sm text-gray-600">Johnson Granite Co.</p>
+                </div>
+              </div>
+              <div className="flex mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 italic mb-4">
+                "Increased my monthly revenue by 65% in just 6 months. The lead quality is incredible - every customer is ready to buy."
+              </p>
+              <div className="bg-green-50 rounded-lg p-3">
+                <div className="text-2xl font-bold text-green-600">+$28K</div>
+                <div className="text-sm text-green-700">Monthly Revenue Increase</div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex items-center mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108755-2616b332e234?w=60&h=60&fit=crop&crop=face"
+                  alt="Sarah Chen"
+                  className="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Sarah Chen</h4>
+                  <p className="text-sm text-gray-600">Premium Stone Designs</p>
+                </div>
+              </div>
+              <div className="flex mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 italic mb-4">
+                "The automated system saves me 20 hours per week. I focus on what I do best - creating beautiful spaces."
+              </p>
+              <div className="bg-blue-50 rounded-lg p-3">
+                <div className="text-2xl font-bold text-blue-600">20hr</div>
+                <div className="text-sm text-blue-700">Weekly Time Savings</div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex items-center mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
+                  alt="David Martinez"
+                  className="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">David Martinez</h4>
+                  <p className="text-sm text-gray-600">Solid Surface Solutions</p>
+                </div>
+              </div>
+              <div className="flex mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 italic mb-4">
+                "Went from 3 employees to 12 in one year. The platform scales with your business perfectly."
+              </p>
+              <div className="bg-purple-50 rounded-lg p-3">
+                <div className="text-2xl font-bold text-purple-600">4x</div>
+                <div className="text-sm text-purple-700">Team Growth</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Grow Your Business?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Join over 500+ contractors already growing their revenue with our platform.
           </p>
-          <p className="text-xs text-gray-500 mt-2">
-            By signing up, you agree to our{' '}
-            <Link href="/terms" className="text-blue-600 hover:text-blue-700">Terms</Link>
-            {' '}and{' '}
-            <Link href="/privacy" className="text-blue-600 hover:text-blue-700">Privacy Policy</Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition-colors">
+              Start Free Today
+            </button>
+            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition-colors">
+              Schedule Demo
+            </button>
+          </div>
+          <p className="text-blue-200 mt-4 text-sm">
+            No contracts • Cancel anytime • 14-day free trial
           </p>
         </div>
       </div>

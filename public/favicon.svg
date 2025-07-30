@@ -1,37 +1,15 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Favicon - Simplified countertop icon -->
-  <defs>
-    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#2563eb;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="faviconAccent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
-    </linearGradient>
-    <pattern id="faviconTexture" patternUnits="userSpaceOnUse" width="2" height="2">
-      <rect width="2" height="2" fill="#1e40af"/>
-      <circle cx="0.5" cy="0.5" r="0.2" fill="#60a5fa" opacity="0.4"/>
-      <circle cx="1.5" cy="1.5" r="0.15" fill="#93c5fd" opacity="0.3"/>
-    </pattern>
-  </defs>
+  <!-- NC Brand Favicon -->
+  <!-- Background circle with brand slate color -->
+  <circle cx="16" cy="16" r="16" fill="#0f172a"/>
   
-  <!-- Background circle -->
-  <circle cx="16" cy="16" r="15" fill="url(#faviconGradient)" stroke="#1e3a8a" stroke-width="1"/>
+  <!-- NC Monogram matching navbar design -->
+  <!-- Letter N in white -->
+  <path d="M7 9h2.5v10l4.5-10h2.5v14h-2.5V13l-4.5 10H7V9z" fill="white"/>
   
-  <!-- Main countertop shape -->
-  <path d="M6 14 L26 13 L26 19 L6 20 Z" fill="url(#faviconGradient)" stroke="#1e40af" stroke-width="0.5"/>
-  <!-- Texture overlay -->
-  <path d="M6 14 L26 13 L26 19 L6 20 Z" fill="url(#faviconTexture)" opacity="0.2"/>
-  <!-- Edge -->
-  <path d="M6 20 L26 19 L27 22 L7 23 Z" fill="#1e3a8a" opacity="0.9"/>
-  <!-- Shine -->
-  <path d="M6 14 L26 13 L26 16 L6 17 Z" fill="url(#faviconAccent)" opacity="0.15"/>
+  <!-- Letter C in brand blue -->
+  <path d="M20 16c0-3 2.5-5.5 5.5-5.5v2c-2 0-3.5 1.5-3.5 3.5s1.5 3.5 3.5 3.5v2c-3 0-5.5-2.5-5.5-5.5z" fill="#3b82f6"/>
   
-  <!-- Corner accent -->
-  <circle cx="23" cy="14.5" r="1" fill="url(#faviconAccent)" opacity="0.7"/>
-  
-  <!-- Letter "N" overlay for brand recognition -->
-  <path d="M11 10 L11 22 L13 22 L13 16 L17 22 L19 22 L19 10 L17 10 L17 16 L13 10 Z" fill="white" opacity="0.9" font-weight="bold"/>
+  <!-- Subtle border for definition -->
+  <circle cx="16" cy="16" r="15" fill="none" stroke="#1e293b" stroke-width="2"/>
 </svg>

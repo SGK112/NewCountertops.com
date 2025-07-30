@@ -3,95 +3,95 @@ import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Star, Shield, Award 
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              {/* Footer Logo */}
-              <div className="w-8 h-8">
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="4" y="12" width="24" height="4" rx="1" fill="#3b82f6"/>
-                  <rect x="4" y="16" width="24" height="3" rx="0.5" fill="#1e3a8a" opacity="0.7"/>
-                  <circle cx="24" cy="13.5" r="1.5" fill="#f59e0b" opacity="0.8"/>
-                </svg>
+            <div className="flex items-center space-x-3 mb-6">
+              {/* Enhanced Footer Logo */}
+              <div className="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg flex items-center justify-center shadow-md">
+                {/* Clean "NC" monogram to match navbar */}
+                <div className="text-white font-bold text-lg tracking-tight">
+                  <span className="text-white">N</span>
+                  <span className="text-blue-400">C</span>
+                </div>
               </div>
               <div>
-                <span className="text-2xl font-bold text-white">NewCountertops</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">NewCountertops</span>
                 <span className="text-lg font-semibold text-orange-400">.com</span>
               </div>
             </div>
-            <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Connecting homeowners with trusted granite contractors and fabricators 
-              across the country. Get quality work done by verified professionals.
+            <p className="text-gray-300 mb-8 max-w-md leading-relaxed text-lg">
+              The premier platform connecting homeowners with certified stone & surface contractors.
+              Professional installations, premium materials, guaranteed satisfaction.
             </p>
-            
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="text-center">
-                <div className="flex items-center justify-center text-blue-400 mb-1">
-                  <Star className="w-5 h-5 mr-1" />
-                  <span className="font-bold">4.9</span>
+
+            {/* Enhanced Trust Indicators */}
+            <div className="grid grid-cols-3 gap-6 mb-8">
+              <div className="text-center bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm border border-gray-700/50">
+                <div className="flex items-center justify-center text-blue-400 mb-2">
+                  <Star className="w-6 h-6 mr-1 fill-current" />
+                  <span className="font-bold text-xl">4.9</span>
                 </div>
-                <div className="text-xs text-gray-400">Average Rating</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wide">Average Rating</div>
               </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center text-green-400 mb-1">
-                  <Shield className="w-5 h-5 mr-1" />
-                  <span className="font-bold">500+</span>
+              <div className="text-center bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm border border-gray-700/50">
+                <div className="flex items-center justify-center text-green-400 mb-2">
+                  <Shield className="w-6 h-6 mr-1" />
+                  <span className="font-bold text-xl">500+</span>
                 </div>
-                <div className="text-xs text-gray-400">Verified Contractors</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wide">Certified Pros</div>
               </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center text-orange-400 mb-1">
-                  <Award className="w-5 h-5 mr-1" />
-                  <span className="font-bold">10K+</span>
+              <div className="text-center bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm border border-gray-700/50">
+                <div className="flex items-center justify-center text-orange-400 mb-2">
+                  <Award className="w-6 h-6 mr-1" />
+                  <span className="font-bold text-xl">$2M+</span>
                 </div>
-                <div className="text-xs text-gray-400">Projects Completed</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wide">Projects Value</div>
               </div>
             </div>
-            
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Facebook size={20} />
+
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-200 hover:scale-110">
+                <Facebook size={24} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Twitter size={20} />
+              <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-200 hover:scale-110">
+                <Twitter size={24} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Instagram size={20} />
+              <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-200 hover:scale-110">
+                <Instagram size={24} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-xl font-semibold mb-6 text-white">Services</h4>
+            <ul className="space-y-3">
               <li>
-                <Link href="/contractors" className="text-gray-300 hover:text-white transition-colors">
-                  Find Contractors
+                <Link href="/contractors" className="text-gray-300 hover:text-blue-400 transition-colors flex items-center group">
+                  <span className="group-hover:translate-x-1 transition-transform">Find Contractors</span>
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works" className="text-gray-300 hover:text-white transition-colors">
-                  How It Works
+                <Link href="/matches" className="text-gray-300 hover:text-blue-400 transition-colors flex items-center group">
+                  <span className="group-hover:translate-x-1 transition-transform">Smart Matching</span>
                 </Link>
               </li>
               <li>
-                <Link href="/for-contractors" className="text-gray-300 hover:text-white transition-colors">
-                  For Contractors
+                <Link href="/quote" className="text-gray-300 hover:text-blue-400 transition-colors flex items-center group">
+                  <span className="group-hover:translate-x-1 transition-transform">Get Quotes</span>
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
-                  About Us
+                <Link href="/signup/contractor" className="text-gray-300 hover:text-blue-400 transition-colors flex items-center group">
+                  <span className="group-hover:translate-x-1 transition-transform">For Contractors</span>
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact
+                <Link href="/about" className="text-gray-300 hover:text-blue-400 transition-colors flex items-center group">
+                  <span className="group-hover:translate-x-1 transition-transform">About Us</span>
                 </Link>
               </li>
             </ul>
@@ -99,19 +99,34 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <Phone size={16} />
-                <span className="text-gray-300">1-800-GRANITE</span>
+            <h4 className="text-xl font-semibold mb-6 text-white">Contact</h4>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors">
+                <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center">
+                  <Phone size={18} />
+                </div>
+                <div>
+                  <div className="font-semibold">1-800-STONE-PRO</div>
+                  <div className="text-sm text-gray-400">24/7 Support</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail size={16} />
-                <span className="text-gray-300">hello@newcountertops.com</span>
+              <div className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors">
+                <div className="w-10 h-10 bg-green-600/20 rounded-lg flex items-center justify-center">
+                  <Mail size={18} />
+                </div>
+                <div>
+                  <div className="font-semibold">hello@newcountertops.com</div>
+                  <div className="text-sm text-gray-400">Quick Response</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <MapPin size={16} />
-                <span className="text-gray-300">Nationwide Service</span>
+              <div className="flex items-center space-x-3 text-gray-300">
+                <div className="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <div className="font-semibold">Nationwide Service</div>
+                  <div className="text-sm text-gray-400">All 50 States</div>
+                </div>
               </div>
             </div>
           </div>

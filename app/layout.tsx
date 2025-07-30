@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Navbar } from '@/components/layout/Navbar'
+import { Navbar } from '@/components/layout/Navbar-clean'
 import { Footer } from '@/components/layout/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -10,7 +10,10 @@ export const metadata = {
   description: 'Connect with verified granite contractors and fabricators for your countertop project. Get quotes, compare prices, and book trusted professionals.',
   keywords: 'granite countertops, contractors, fabricators, kitchen remodel, bathroom countertops',
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' },
+    ],
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },

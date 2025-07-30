@@ -1,18 +1,15 @@
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="smallFaviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+  <!-- NC Brand Favicon 16x16 -->
+  <!-- Background circle with brand slate color -->
+  <circle cx="8" cy="8" r="8" fill="#0f172a"/>
   
-  <!-- Background -->
-  <rect width="16" height="16" rx="2" fill="url(#smallFaviconGradient)"/>
+  <!-- NC Monogram - simplified for small size -->
+  <!-- Letter N in white -->
+  <path d="M3 4h1v4l2.5-4h1v6h-1v-4L3.5 10H3V4z" fill="white"/>
   
-  <!-- Countertop -->
-  <rect x="2" y="7" width="12" height="3" rx="0.5" fill="#ffffff" opacity="0.9"/>
-  <rect x="2" y="10" width="12" height="2" rx="0.5" fill="#1e3a8a" opacity="0.7"/>
+  <!-- Letter C in brand blue -->
+  <path d="M9.5 8c0-1.5 1.2-2.5 2.5-2.5v1c-0.8 0-1.5 0.7-1.5 1.5s0.7 1.5 1.5 1.5v1c-1.3 0-2.5-1-2.5-2.5z" fill="#3b82f6"/>
   
-  <!-- Accent dot -->
-  <circle cx="11" cy="8" r="0.8" fill="#f59e0b" opacity="0.8"/>
+  <!-- Subtle border -->
+  <circle cx="8" cy="8" r="7" fill="none" stroke="#1e293b" stroke-width="1"/>
 </svg>

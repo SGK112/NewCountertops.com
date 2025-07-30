@@ -5,21 +5,17 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Professional Stone-Inspired Hero Section */}
-      <div className="stone-texture bg-gradient-to-br from-stone-50 via-stone-100 to-neutral-50 py-16 sm:py-20 lg:py-24 relative overflow-hidden" style={{
-        background: 'var(--gradient-hero)'
-      }}>
-        {/* Enhanced natural stone pattern background */}
-        <div className="absolute inset-0 opacity-[0.03]">
+      <div className="stone-texture bg-gradient-to-br from-slate-50 via-stone-100 to-neutral-50 py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+        {/* Natural stone pattern background */}
+        <div className="absolute inset-0 opacity-[0.02]">
           <svg className="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="stone-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
-                <circle cx="40" cy="40" r="2" fill="var(--stone-accent-copper)" />
-                <circle cx="20" cy="20" r="1.5" fill="var(--stone-marble-gold)" opacity="0.6" />
-                <circle cx="60" cy="60" r="1.5" fill="var(--stone-accent-bronze)" opacity="0.6" />
-                <circle cx="20" cy="60" r="1" fill="var(--stone-granite-medium)" opacity="0.4" />
-                <circle cx="60" cy="20" r="1" fill="var(--stone-accent-copper)" opacity="0.4" />
-                <circle cx="10" cy="40" r="0.8" fill="var(--stone-marble-gold)" opacity="0.3" />
-                <circle cx="70" cy="40" r="0.8" fill="var(--stone-accent-gold)" opacity="0.3" />
+              <pattern id="stone-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+                <circle cx="30" cy="30" r="1.5" fill="currentColor" />
+                <circle cx="15" cy="15" r="1" fill="currentColor" opacity="0.5" />
+                <circle cx="45" cy="45" r="1" fill="currentColor" opacity="0.5" />
+                <circle cx="15" cy="45" r="0.8" fill="currentColor" opacity="0.3" />
+                <circle cx="45" cy="15" r="0.8" fill="currentColor" opacity="0.3" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#stone-pattern)" />
@@ -59,31 +55,22 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Professional Stats with Enhanced Stone Colors */}
+            {/* Professional Stats with Stone Inspiration */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
-              <div className="text-center card card-hover" style={{
-                background: 'linear-gradient(135deg, var(--stone-quartz-white) 0%, var(--stone-quartz-pearl) 50%, var(--stone-marble-beige) 100%)',
-                borderColor: 'rgba(212, 175, 55, 0.25)'
-              }}>
+              <div className="text-center card card-hover bg-gradient-to-br from-white via-stone-50 to-neutral-50 p-4 sm:p-6">
                 <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2">500+</div>
-                <div className="font-semibold text-sm sm:text-base" style={{ color: 'var(--stone-granite-dark)' }}>Certified Fabricators</div>
-                <div className="text-xs sm:text-sm mt-1" style={{ color: 'var(--stone-granite-medium)' }}>Premium stone specialists</div>
+                <div className="text-stone-700 font-semibold text-sm sm:text-base">Certified Fabricators</div>
+                <div className="text-stone-500 text-xs sm:text-sm mt-1">Premium stone specialists</div>
               </div>
-              <div className="text-center card card-hover" style={{
-                background: 'linear-gradient(135deg, var(--stone-quartz-white) 0%, #f0fdf4 50%, #dcfce7 100%)',
-                borderColor: 'rgba(34, 197, 94, 0.25)'
-              }}>
+              <div className="text-center card card-hover bg-gradient-to-br from-white via-emerald-50 to-green-50 p-4 sm:p-6">
                 <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--stone-granite-brown)' }}>98%</div>
-                <div className="font-semibold text-sm sm:text-base" style={{ color: 'var(--stone-granite-dark)' }}>Client Satisfaction</div>
-                <div className="text-xs sm:text-sm mt-1" style={{ color: 'var(--stone-granite-medium)' }}>Quality guaranteed</div>
+                <div className="text-stone-700 font-semibold text-sm sm:text-base">Client Satisfaction</div>
+                <div className="text-stone-500 text-xs sm:text-sm mt-1">Quality guaranteed</div>
               </div>
-              <div className="text-center card card-hover sm:col-span-1 col-span-1" style={{
-                background: 'linear-gradient(135deg, var(--stone-quartz-white) 0%, #fffbeb 50%, #fef3c7 100%)',
-                borderColor: 'rgba(205, 127, 50, 0.25)'
-              }}>
+              <div className="text-center card card-hover bg-gradient-to-br from-white via-amber-50 to-yellow-50 p-4 sm:p-6 sm:col-span-1 col-span-1">
                 <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--stone-accent-copper)' }}>$5M+</div>
-                <div className="font-semibold text-sm sm:text-base" style={{ color: 'var(--stone-granite-dark)' }}>Projects Delivered</div>
-                <div className="text-xs sm:text-sm mt-1" style={{ color: 'var(--stone-granite-medium)' }}>Professional installations</div>
+                <div className="text-stone-700 font-semibold text-sm sm:text-base">Projects Delivered</div>
+                <div className="text-stone-500 text-xs sm:text-sm mt-1">Professional installations</div>
               </div>
             </div>
           </div>
@@ -91,60 +78,58 @@ export default function HomePage() {
       </div>
 
       {/* Premium Stone Brands Section */}
-      <div className="py-12 sm:py-16 lg:py-20 border-t" style={{
-        background: 'linear-gradient(to bottom, var(--stone-quartz-pearl), var(--stone-marble-beige))',
-        borderColor: 'rgba(212, 175, 55, 0.2)'
-      }}>
+      <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-stone-50 to-neutral-100 border-t border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4" style={{ color: 'var(--stone-granite-dark)' }}>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 mb-3 sm:mb-4">
               Premium Stone & Surface Partners
             </h2>
-            <p className="text-base sm:text-lg max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--stone-granite-medium)' }}>
+            <p className="text-base sm:text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed">
               Our certified contractors are authorized dealers for the world's finest stone brands,
-              <span className="block mt-1 font-medium" style={{ color: 'var(--stone-granite-dark)' }}>ensuring authenticity and expert installation</span>
+              <span className="block mt-1 font-medium">ensuring authenticity and expert installation</span>
             </p>
           </div>
 
-          {/* Placeholder for brand logos - to be added later */}
-          <div className="text-center py-8">
-            <p className="text-lg font-medium text-stone-600 mb-6">Trusted by Leading Surface Manufacturers</p>
-            <div className="flex flex-wrap justify-center gap-3 text-white font-medium">
-              {/* Premium Quartz Brands */}
-              <a href="https://www.silestone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Silestone by Cosentino</a>
-              <a href="https://www.caesarstone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Caesarstone</a>
-              <a href="https://www.cambriausa.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Cambria</a>
-              <a href="https://www.quartzmaster.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartz Master</a>
-              <a href="https://www.msistone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">MSI Stone</a>
-              <a href="https://www.hanstone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HanStone Quartz</a>
-              <a href="https://www.lgviatera.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">LG Viatera</a>
-              <a href="https://www.wilsonart.com/quartz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Quartz</a>
-              <a href="https://www.samsung.com/us/home-appliances/kitchen-appliances/radianz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Samsung Radianz</a>
-              
-              {/* Ultra-Compact Surfaces */}
-              <a href="https://www.dekton.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Dekton by Cosentino</a>
-              <a href="https://www.neolith.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Neolith</a>
-              <a href="https://www.lapitec.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Lapitec</a>
-              
-              {/* Solid Surface */}
-              <a href="https://www.himacs.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HI-MACS</a>
-              <a href="https://www.corian.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Corian</a>
-              <a href="https://www.avonite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Avonite</a>
-              <a href="https://www.staron.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Staron</a>
-              
-              {/* Laminate Surfaces */}
-              <a href="https://www.formica.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-yellow-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Formica</a>
-              <a href="https://www.wilsonart.com/laminate" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-lime-600 to-lime-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Laminate</a>
-              <a href="https://www.pionite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-sky-600 to-sky-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Pionite</a>
-              <a href="https://www.arborite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Arborite</a>
-              
-              {/* Additional Premium Brands */}
-              <a href="https://www.quartzforms.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-stone-600 to-stone-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartzforms</a>
-              <a href="https://www.vicostone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-zinc-600 to-zinc-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Vicostone</a>
-              <a href="https://www.compac.es" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-neutral-600 to-neutral-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Compac</a>
-              <a href="https://www.polarstone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Polarstone</a>
+          {/* Mobile-optimized brand grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 items-center justify-items-center">
+            <div className="flex justify-center group p-4 rounded-lg hover:bg-white/50 transition-all duration-300">
+              <img
+                src="/brands/silestone-professional.svg"
+                alt="Silestone by Cosentino - Premium Quartz"
+                className="h-12 sm:h-14 lg:h-16 w-auto opacity-70 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+              />
             </div>
-          </div>          {/* Professional Benefits */}
+            <div className="flex justify-center group p-4 rounded-lg hover:bg-white/50 transition-all duration-300">
+              <img
+                src="/brands/caesarstone-professional.svg"
+                alt="Caesarstone - Engineered Quartz"
+                className="h-12 sm:h-14 lg:h-16 w-auto opacity-70 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center group p-4 rounded-lg hover:bg-white/50 transition-all duration-300">
+              <img
+                src="/brands/cambria-professional.svg"
+                alt="Cambria - Natural Quartz"
+                className="h-12 sm:h-14 lg:h-16 w-auto opacity-70 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center group p-4 rounded-lg hover:bg-white/50 transition-all duration-300">
+              <img
+                src="/brands/quartz-master-professional.svg"
+                alt="Quartz Master - Engineered Stone"
+                className="h-12 sm:h-14 lg:h-16 w-auto opacity-70 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center group p-4 rounded-lg hover:bg-white/50 transition-all duration-300 col-span-2 sm:col-span-1">
+              <img
+                src="/brands/msi-stone-professional.svg"
+                alt="MSI Stone - Surfaces & Tile"
+                className="h-12 sm:h-14 lg:h-16 w-auto opacity-70 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+              />
+            </div>
+          </div>
+
+          {/* Professional Benefits */}
           <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center card p-6 bg-gradient-to-br from-white to-stone-50">
               <div className="w-12 h-12 bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
@@ -178,94 +163,86 @@ export default function HomePage() {
       </div>
 
       {/* Professional Process Section */}
-      <div className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="py-12 sm:py-16 lg:py-20 bg-white stone-texture">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 mb-3 sm:mb-4">
               Professional Stone Installation Process
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
               Our certified fabricators follow industry best practices for flawless results
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 xl:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {/* Step 1 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-blue-600">1</span>
+            <div className="text-center group">
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-stone-100 to-stone-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-2xl font-bold text-gradient">1</span>
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
               </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Project Consultation</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Share your vision, material preferences, budget, and timeline with certified fabricators</p>
-                <Link href="/signup" className="btn-primary text-sm inline-flex items-center justify-center mt-auto">
-                  Get Started <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-stone-900 mb-2 sm:mb-3">Project Consultation</h3>
+              <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-4">Share your vision, material preferences, budget, and timeline with certified fabricators</p>
+              <Link href="/signup" className="btn-accent text-sm inline-flex items-center">
+                Get Started <ArrowRight className="w-4 h-4 ml-1" />
+              </Link>
             </div>
 
             {/* Step 2 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-slate-700">2</span>
+            <div className="text-center group">
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-2xl font-bold" style={{ color: 'var(--stone-granite-brown)' }}>2</span>
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-slate-600 to-slate-700 rounded-full flex items-center justify-center">
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center">
                   <Heart className="w-3 h-3 text-white" />
                 </div>
               </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Expert Matching</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Our algorithm connects you with specialized stone contractors in your area</p>
-                <Link href="/matches" className="btn-secondary text-sm inline-flex items-center justify-center mt-auto">
-                  View Matches <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-stone-900 mb-2 sm:mb-3">Expert Matching</h3>
+              <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-4">Our algorithm connects you with specialized stone contractors in your area</p>
+              <Link href="/matches" className="btn-stone text-sm inline-flex items-center">
+                View Matches <ArrowRight className="w-4 h-4 ml-1" />
+              </Link>
             </div>
 
             {/* Step 3 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
+            <div className="text-center group">
+              <div className="relative mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-blue-600">3</span>
+                  <span className="text-2xl font-bold" style={{ color: 'var(--stone-accent-copper)' }}>3</span>
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center">
                   <MessageCircle className="w-3 h-3 text-white" />
                 </div>
               </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Compare Proposals</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Review portfolios, get detailed quotes, and chat directly with fabricators</p>
-                <Link href="/quote" className="btn-primary text-sm inline-flex items-center justify-center mt-auto">
-                  Get Quotes <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-stone-900 mb-2 sm:mb-3">Compare Proposals</h3>
+              <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-4">Review portfolios, get detailed quotes, and chat directly with fabricators</p>
+              <Link href="/quote" className="btn-primary text-sm inline-flex items-center">
+                Get Quotes <ArrowRight className="w-4 h-4 ml-1" />
+              </Link>
             </div>
 
             {/* Step 4 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-slate-700">4</span>
+            <div className="text-center group">
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-2xl font-bold text-gradient">4</span>
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-slate-600 to-slate-700 rounded-full flex items-center justify-center">
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
                   <Star className="w-3 h-3 text-white" />
                 </div>
               </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Professional Installation</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Book your project and enjoy expert fabrication and flawless installation</p>
-                <Link href="/contractors" className="btn-secondary text-sm inline-flex items-center justify-center mt-auto">
-                  Find Contractors <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-stone-900 mb-2 sm:mb-3">Professional Installation</h3>
+              <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-4">Book your project and enjoy expert fabrication and flawless installation</p>
+              <Link href="/contractors" className="text-gradient font-semibold text-sm inline-flex items-center hover:underline">
+                Find Contractors <ArrowRight className="w-4 h-4 ml-1" />
+              </Link>
             </div>
           </div>
         </div>
