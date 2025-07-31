@@ -61,6 +61,37 @@ npm run build:analyze
 
 ## 🚀 Deployment Platforms
 
+### Render (Step-by-Step) - Recommended for Full-Stack
+**Step 1: Create PostgreSQL Database**
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Click "New +" → "PostgreSQL"
+3. Name: `newcountertops-db`
+4. Plan: Free tier or paid
+5. Note down the **Internal Database URL** (starts with `postgresql://`)
+
+**Step 2: Create Web Service**
+1. Click "New +" → "Web Service"
+2. Connect your GitHub repository: `SGK112/NewCountertops.com`
+3. Branch: `main`
+4. Runtime: `Node`
+5. Build Command: `npm ci && npm run db:generate && npm run build`
+6. Start Command: `npm run start`
+
+**Step 3: Configure Environment Variables**
+In the "Environment" tab, add these exact variables:
+```bash
+DATABASE_URL=postgresql://user:password@dpg-xxxxx-internal:5432/dbname
+NEXTAUTH_URL=https://your-app-name.onrender.com
+NEXTAUTH_SECRET=f5dab90bb976d1bf7c8e9f4a3d2e1b6c8a5f9e2d7c4b3a1e8f6d9c2b5a8e1f4d
+NODE_ENV=production
+CSRF_SECRET=572226ab12ee29d87f3c8b1e4a9d6f2e8c5b3a7f1d4e9c6b2a5e8f3d6c9b2a5e
+```
+
+**Step 4: Deploy**
+1. Click "Create Web Service"
+2. Wait for deployment to complete
+3. Your app will be live at `https://your-app-name.onrender.com`
+
 ### Vercel (Recommended)
 1. Connect your GitHub repository
 2. Set environment variables in Vercel dashboard
@@ -80,14 +111,48 @@ npm run build:analyze
 4. Deploy automatically
 
 ### Render (Full-Stack Ready)
-1. Create PostgreSQL database service
-2. Create web service from GitHub
-3. Configure build/start commands:
+1. **Create PostgreSQL database service**
+2. **Create web service from GitHub**
+3. **Configure build/start commands:**
    - **Build Command**: `npm ci && npm run db:generate && npm run build`
    - **Start Command**: `npm run start`
    - **Node Version**: `18` or `20`
-4. Set environment variables (DATABASE_URL, NEXTAUTH_SECRET, etc.)
-5. Deploy automatically on git push
+
+4. **Set Environment Variables in Render Dashboard:**
+   ```bash
+   # Required - Database (use Render PostgreSQL Internal URL)
+   DATABASE_URL=postgresql://user:password@dpg-xxxxx-internal:5432/dbname
+   
+   # Required - Authentication
+   NEXTAUTH_URL=https://your-app-name.onrender.com
+   NEXTAUTH_SECRET=f5dab90bb976d1bf7c8e9f4a3d2e1b6c8a5f9e2d7c4b3a1e8f6d9c2b5a8e1f4d
+   NODE_ENV=production
+   
+   # Required - Security
+   CSRF_SECRET=572226ab12ee29d87f3c8b1e4a9d6f2e8c5b3a7f1d4e9c6b2a5e8f3d6c9b2a5e
+   
+   # Optional - Twilio (SMS/Voice features)
+   TWILIO_ACCOUNT_SID=your_actual_twilio_sid
+   TWILIO_AUTH_TOKEN=your_actual_twilio_token  
+   TWILIO_PHONE_NUMBER=your_actual_twilio_number
+   
+   # Optional - Stripe (Payment processing)
+   STRIPE_PUBLISHABLE_KEY=pk_live_your_stripe_key
+   STRIPE_SECRET_KEY=sk_live_your_stripe_secret
+   STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+   
+   # Optional - Email
+   EMAIL_SERVER=smtp://user:pass@smtp.provider.com:587
+   EMAIL_FROM=noreply@your-domain.com
+   ```
+
+5. **Deploy automatically on git push**
+
+**⚠️ Important Render Notes:**
+- Use the **Internal Database URL** from your Render PostgreSQL service (not External)
+- The `NEXTAUTH_SECRET` and `CSRF_SECRET` above are the production keys we generated earlier
+- Replace `your-app-name` with your actual Render app name
+- Optional services can be added later as needed
 
 ### Self-Hosted
 1. Set up Node.js server (18+)
@@ -214,6 +279,22 @@ jobs:
 - Use the Internal Database URL from Render PostgreSQL
 - Format: `postgresql://user:pass@host:port/db`
 - Set in Environment Variables, not hardcoded
+
+**Environment Variables Setup in Render:**
+1. Go to your Render service dashboard
+2. Click "Environment" tab
+3. Add each variable individually:
+   - **Key**: `DATABASE_URL` 
+   - **Value**: Copy from your PostgreSQL service (Internal URL)
+   - **Key**: `NEXTAUTH_SECRET`
+   - **Value**: `f5dab90bb976d1bf7c8e9f4a3d2e1b6c8a5f9e2d7c4b3a1e8f6d9c2b5a8e1f4d`
+   - **Key**: `CSRF_SECRET`
+   - **Value**: `572226ab12ee29d87f3c8b1e4a9d6f2e8c5b3a7f1d4e9c6b2a5e8f3d6c9b2a5e`
+   - **Key**: `NEXTAUTH_URL`
+   - **Value**: `https://your-app-name.onrender.com`
+   - **Key**: `NODE_ENV`
+   - **Value**: `production`
+4. Click "Save Changes" - this will trigger a redeploy
 
 ### Debug Tools
 - Next.js build analyzer
