@@ -269,6 +269,7 @@ jobs:
 5. **Performance**: Enable caching and CDN
 
 ### Render-Specific Issues
+
 **"Could not open requirements file" Error:**
 - Render is detecting your app as Python instead of Node.js
 - **Solution 1**: Add `render.yaml` file (included in project)
@@ -280,16 +281,22 @@ jobs:
 - Use: `npm ci && npm run db:generate && npm run build`
 
 **Database Connection Issues:**
-- Use the Internal Database URL from Render PostgreSQL
-- Format: `postgresql://user:pass@host:port/db`
+- Use MongoDB Atlas connection string (included in setup)
+- Format: `mongodb+srv://username:password@cluster.mongodb.net/database`
 - Set in Environment Variables, not hardcoded
+
+**SSR/Prerender Errors (Fixed in latest version):**
+- **Error**: `Cannot read properties of null (reading 'useContext')`
+- **Error**: `<Html> should not be imported outside of pages/_document`
+- **Solution**: Updated providers and layout with proper SSR handling
+- **Fix**: Added `suppressHydrationWarning` and error boundaries
 
 **Environment Variables Setup in Render:**
 1. Go to your Render service dashboard
 2. Click "Environment" tab
 3. Add each variable individually:
    - **Key**: `DATABASE_URL` 
-   - **Value**: Copy from your PostgreSQL service (Internal URL)
+   - **Value**: `mongodb+srv://username:password@cluster.mongodb.net/newcountertops`
    - **Key**: `NEXTAUTH_SECRET`
    - **Value**: `f5dab90bb976d1bf7c8e9f4a3d2e1b6c8a5f9e2d7c4b3a1e8f6d9c2b5a8e1f4d`
    - **Key**: `CSRF_SECRET`
@@ -299,6 +306,11 @@ jobs:
    - **Key**: `NODE_ENV`
    - **Value**: `production`
 4. Click "Save Changes" - this will trigger a redeploy
+
+**Build Success Indicators:**
+- ✅ Should see: "Generating static pages (43/43)" 
+- ✅ Should see: "Finalizing page optimization ✓"
+- ✅ No SSR/hydration errors in build log
 
 ### Debug Tools
 - Next.js build analyzer

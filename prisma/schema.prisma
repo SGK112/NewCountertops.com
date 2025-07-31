@@ -6,13 +6,13 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Account {
-  id                String  @id @default(cuid())
-  userId            String
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
   type              String
   provider          String
   providerAccountId String
@@ -30,15 +30,15 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(cuid())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
   sessionToken String   @unique
-  userId       String
+  userId       String   @db.ObjectId
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
   email         String    @unique
   emailVerified DateTime?
@@ -56,6 +56,7 @@ model User {
 }
 
 model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   identifier String
   token      String   @unique
   expires    DateTime
@@ -64,8 +65,8 @@ model VerificationToken {
 }
 
 model Customer {
-  id                String   @id @default(cuid())
-  userId            String   @unique
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String   @unique @db.ObjectId
   firstName         String
   lastName          String
   phone             String?
@@ -77,7 +78,7 @@ model Customer {
   homeSize          String?
   preferredBudget   String?
   projectTimeline   String?
-  preferences       String?  // JSON string for SQLite (materials, styles, features)
+  preferences       String?  // JSON string for materials, styles, features
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
@@ -90,12 +91,12 @@ model Customer {
 }
 
 model Contractor {
-  id              String    @id @default(cuid())
-  userId          String    @unique
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String    @unique @db.ObjectId
   businessName    String
   description     String?
-  serviceArea     String    // JSON string for SQLite
-  specialties     String    // JSON string for SQLite
+  serviceArea     String    // JSON string for areas
+  specialties     String    // JSON string for specialties
   yearsExperience Int?
   licenseNumber   String?
   insuranceInfo   String?
@@ -109,9 +110,9 @@ model Contractor {
   longitude       Float?
   hourlyRate      Float?
   projectMinimum  Float?
-  certifications  String?   // JSON string for SQLite
-  availableHours  String?   // JSON string for SQLite
-  portfolioImages String?   // JSON string for SQLite
+  certifications  String?   // JSON string for certifications
+  availableHours  String?   // JSON string for availability
+  portfolioImages String?   // JSON string for images
   isVerified      Boolean   @default(false)
   rating          Float     @default(0.0)
   reviewCount     Int       @default(0)
@@ -128,9 +129,9 @@ model Contractor {
 }
 
 model SavedContractor {
-  id           String @id @default(cuid())
-  customerId   String
-  contractorId String
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  customerId   String @db.ObjectId
+  contractorId String @db.ObjectId
   createdAt    DateTime @default(now())
 
   customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
