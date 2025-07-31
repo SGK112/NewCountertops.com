@@ -23,6 +23,12 @@ services:
         value: 10000
       - key: NODE_OPTIONS
         value: "--max-old-space-size=1024"
+      - key: TWILIO_ACCOUNT_SID
+        value: ""
+      - key: TWILIO_AUTH_TOKEN
+        value: ""
+      - key: TWILIO_PHONE_NUMBER
+        value: ""
 
 databases:
   - name: newcountertops-db
