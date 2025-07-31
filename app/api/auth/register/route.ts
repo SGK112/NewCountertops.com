@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: validation.error }, { status: 400 })
     }
 
-    const { name, email, password, userType, businessName, serviceArea, specialties, yearsExperience } = validation.data
+    const { name, email, password, userType, businessName, serviceArea, specialties, yearsExperience, phone } = validation.data
 
     // Check if user already exists
     const exists = await prisma.user.findUnique({
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
           serviceArea: JSON.stringify(serviceArea || ['Austin, TX']),
           specialties: JSON.stringify(specialties || ['General Contracting']),
           yearsExperience: yearsExperience || 1,
-          phone: '555-0000', // Default phone
+          phone: phone || '555-0000',
           address: '123 Business St', // Default values for required fields
           city: 'Austin',
           state: 'TX',

@@ -12,7 +12,8 @@ export const registerSchema = z.object({
   businessName: z.string().optional(),
   serviceArea: z.array(z.string()).optional(),
   specialties: z.array(z.string()).optional(),
-  yearsExperience: z.number().min(0).max(50).optional()
+  yearsExperience: z.number().min(0).max(50).optional(),
+  phone: z.string().optional()
 })
 
 // Quote creation validation
