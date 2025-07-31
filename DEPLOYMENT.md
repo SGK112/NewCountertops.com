@@ -276,6 +276,11 @@ jobs:
 - **Solution 2**: Ensure `package.json` has `engines` field
 - **Solution 3**: In Render dashboard, manually set Environment to "Node"
 
+**"Cannot find module 'autoprefixer'" Error: ✅ FIXED**
+- **Issue**: CSS processing dependencies in devDependencies aren't available during production build
+- **Solution**: Moved `autoprefixer`, `postcss`, and `tailwindcss` to main dependencies
+- **Status**: ✅ Resolved in latest commit (3d895b9)
+
 **Build Command Not Found:**
 - Verify your `package.json` scripts section
 - Use: `npm ci && npm run db:generate && npm run build`
