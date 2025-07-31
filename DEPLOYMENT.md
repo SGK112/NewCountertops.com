@@ -62,25 +62,27 @@ npm run build:analyze
 ## 🚀 Deployment Platforms
 
 ### Render (Step-by-Step) - Recommended for Full-Stack
-**Step 1: Create PostgreSQL Database**
-1. Go to [Render Dashboard](https://dashboard.render.com)
-2. Click "New +" → "PostgreSQL"
-3. Name: `newcountertops-db`
-4. Plan: Free tier or paid
-5. Note down the **Internal Database URL** (starts with `postgresql://`)
+**Step 1: Set up MongoDB Atlas Database**
+1. Go to [MongoDB Atlas](https://www.mongodb.com/atlas) (free tier available)
+2. Create account and new cluster
+3. Create database user with username/password
+4. In "Network Access", add IP `0.0.0.0/0` (allows Render access)
+5. In "Database", click "Connect" → "Connect your application"
+6. Copy the connection string (looks like: `mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/`)
 
 **Step 2: Create Web Service**
-1. Click "New +" → "Web Service"
-2. Connect your GitHub repository: `SGK112/NewCountertops.com`
-3. Branch: `main`
-4. Runtime: `Node`
-5. Build Command: `npm ci && npm run db:generate && npm run build`
-6. Start Command: `npm run start`
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Click "New +" → "Web Service"
+3. Connect your GitHub repository: `SGK112/NewCountertops.com`
+4. Branch: `main`
+5. Runtime: `Node`
+6. Build Command: `npm ci && npm run db:generate && npm run build`
+7. Start Command: `npm run start`
 
 **Step 3: Configure Environment Variables**
 In the "Environment" tab, add these exact variables:
 ```bash
-DATABASE_URL=postgresql://user:password@dpg-xxxxx-internal:5432/dbname
+DATABASE_URL=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/newcountertops?retryWrites=true&w=majority
 NEXTAUTH_URL=https://your-app-name.onrender.com
 NEXTAUTH_SECRET=f5dab90bb976d1bf7c8e9f4a3d2e1b6c8a5f9e2d7c4b3a1e8f6d9c2b5a8e1f4d
 NODE_ENV=production
@@ -110,7 +112,9 @@ CSRF_SECRET=572226ab12ee29d87f3c8b1e4a9d6f2e8c5b3a7f1d4e9c6b2a5e8f3d6c9b2a5e
 3. Set environment variables
 4. Deploy automatically
 
-### Render (Full-Stack Ready)
+### Render (Alternative: PostgreSQL Setup)
+**Note: Your app currently uses MongoDB. Use this section only if you want to switch to PostgreSQL.**
+
 1. **Create PostgreSQL database service**
 2. **Create web service from GitHub**
 3. **Configure build/start commands:**
@@ -148,11 +152,11 @@ CSRF_SECRET=572226ab12ee29d87f3c8b1e4a9d6f2e8c5b3a7f1d4e9c6b2a5e8f3d6c9b2a5e
 
 5. **Deploy automatically on git push**
 
-**⚠️ Important Render Notes:**
+**⚠️ Important Notes for PostgreSQL:**
+- Requires changing Prisma schema from `mongodb` to `postgresql`
 - Use the **Internal Database URL** from your Render PostgreSQL service (not External)
 - The `NEXTAUTH_SECRET` and `CSRF_SECRET` above are the production keys we generated earlier
 - Replace `your-app-name` with your actual Render app name
-- Optional services can be added later as needed
 
 ### Self-Hosted
 1. Set up Node.js server (18+)
