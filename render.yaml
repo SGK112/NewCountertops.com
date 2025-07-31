@@ -3,19 +3,23 @@ services:
     name: newcountertops-web
     env: node
     plan: starter
-    buildCommand: npm ci --cache /tmp/empty-cache && npm run db:generate && npm run build
+    buildCommand: npm ci --cache /tmp/empty-cache && npm run db:generate && npm run db:push && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
         value: production
       - key: NEXTAUTH_SECRET
-        generateValue: true
+        value: f5dab90bb976d1bf7c8e9f4a3d2e1b6c8a5f9e2d7c4b3a1e8f6d9c2b5a8e1f4d
+      - key: NEXTAUTH_URL
+        value: https://marketplace-app-oorn.onrender.com
       - key: DATABASE_URL
         fromDatabase:
           name: newcountertops-db
           property: connectionString
       - key: CSRF_SECRET
-        generateValue: true
+        value: 572226ab12ee29d87f3c8b1e4a9d6f2e8c5b3a7f1d4e9c2b5a8e1f4d
+      - key: PORT
+        value: 10000
 
 databases:
   - name: newcountertops-db
