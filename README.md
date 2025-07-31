@@ -1,13 +1,31 @@
-# NewCountertops.com - Granite Contractor Marketplace
+# NewCountertops.com - Production Ready Marketplace
 
-A full-service marketplace connecting homeowners with trusted granite contractors and fabricators.
+A comprehensive Next.js 14 marketplace connecting homeowners with qualified stone and surface contractors. Built with modern technologies and production-ready features.
 
-## Features
+## 🚀 Quick Start
 
-- **User Management**: Separate dashboards for homeowners and contractors
-- **Contractor Directory**: Browse verified contractors with portfolios
-- **Quote System**: Request and compare quotes from multiple contractors
-- **Booking & Scheduling**: Easy appointment booking system
+```bash
+# Clone the repository
+git clone https://github.com/SGK112/NewCountertops.com.git
+cd NewCountertops.com
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your configuration
+
+# Initialize database
+npm run db:generate
+npm run db:push
+npm run db:seed
+
+# Start development server
+npm run dev
+```
+
+Visit `http://localhost:3000` to see the application.
 - **Review System**: Rate and review contractors
 - **Payment Integration**: Secure payments with Stripe
 - **Messaging**: Direct communication between users
