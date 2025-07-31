@@ -1,7 +1,10 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
+// Force dynamic rendering for authentication
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { 
   Users, 
