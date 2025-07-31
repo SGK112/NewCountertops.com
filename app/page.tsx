@@ -117,17 +117,17 @@ export default function HomePage() {
               <Link href="/manufacturers/quartz-master" className="px-4 py-2 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartz Master</Link>
               <Link href="/manufacturers/msi-stone" className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">MSI Stone</Link>
               <Link href="/manufacturers/hanstone" className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HanStone Quartz</Link>
-              <a href="https://www.lgviatera.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">LG Viatera</a>
-              <a href="https://www.wilsonart.com/quartz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Quartz</a>
-              <a href="https://www.samsung.com/us/home-appliances/kitchen-appliances/radianz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Samsung Radianz</a>
+              <Link href="/manufacturers/lg-viatera" className="px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">LG Viatera</Link>
+              <Link href="/manufacturers/wilsonart-quartz" className="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Quartz</Link>
+              <Link href="/manufacturers/samsung-radianz" className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Samsung Radianz</Link>
 
               {/* Ultra-Compact Surfaces */}
-              <a href="https://www.dekton.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Dekton by Cosentino</a>
-              <a href="https://www.neolith.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Neolith</a>
+              <Link href="/manufacturers/dekton" className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Dekton by Cosentino</Link>
+              <Link href="/manufacturers/neolith" className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Neolith</Link>
               <a href="https://www.lapitec.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Lapitec</a>
 
               {/* Solid Surface */}
-              <a href="https://www.himacs.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HI-MACS</a>
+              <Link href="/manufacturers/hi-macs" className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HI-MACS</Link>
               <Link href="/manufacturers/corian" className="px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Corian</Link>
               <a href="https://www.avonite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Avonite</a>
               <a href="https://www.staron.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Staron</a>
