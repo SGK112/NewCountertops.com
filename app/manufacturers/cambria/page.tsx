@@ -10,7 +10,7 @@ export default function CambriaPage() {
       name: "Brittanicca Collection",
       description: "Bold patterns inspired by British elegance",
       colors: ["Britannica Warm", "Britannica Cool", "Swanbridge", "Summerhill"],
-      image: "https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&h=600&fit=crop"
     },
     {
       name: "Coastal Collection",
@@ -98,7 +98,7 @@ export default function CambriaPage() {
             </div>
             <div className="relative">
               <Image 
-                src="https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=800&h=600&fit=crop" 
+                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&h=600&fit=crop" 
                 alt="Cambria Kitchen" 
                 width={600} 
                 height={400}

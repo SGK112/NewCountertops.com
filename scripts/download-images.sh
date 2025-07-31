@@ -11,7 +11,7 @@ curl -o public/images/countertops/granite-white-ice.jpg "https://images.unsplash
 curl -o public/images/countertops/granite-santa-cecilia.jpg "https://images.unsplash.com/photo-1556909114-25c8d58e4c6b?q=80&w=800&h=600&fit=crop&ixlib=rb-4.0.3"
 
 # Quartz images
-curl -o public/images/countertops/quartz-calacatta.jpg "https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=800&h=600&fit=crop&ixlib=rb-4.0.3"
+curl -o public/images/countertops/quartz-calacatta.jpg "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&h=600&fit=crop&ixlib=rb-4.0.3"
 curl -o public/images/countertops/quartz-charcoal.jpg "https://images.unsplash.com/photo-1556909114-2d4d4d6e4f6f?q=80&w=800&h=600&fit=crop&ixlib=rb-4.0.3"
 
 # Marble images

@@ -10,7 +10,7 @@ export default function HanstonePage() {
       name: "Calacatta Collection",
       description: "Inspired by the famous Italian marble",
       colors: ["Calacatta Elite", "Calacatta Classique", "Calacatta Nuvo", "Calacatta Vagli"],
-      image: "https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&h=600&fit=crop"
     },
     {
       name: "Solid Collection",
@@ -98,7 +98,7 @@ export default function HanstonePage() {
             </div>
             <div className="relative">
               <Image 
-                src="https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=800&h=600&fit=crop" 
+                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&h=600&fit=crop" 
                 alt="Hanstone Kitchen" 
                 width={600} 
                 height={400}

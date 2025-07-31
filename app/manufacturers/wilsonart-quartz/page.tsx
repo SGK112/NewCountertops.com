@@ -10,7 +10,7 @@ export default function WilsonartQuartzPage() {
       name: "HD Collection",
       description: "High-definition surfaces with ultra-realistic patterns",
       colors: ["HD Calcutta Marble", "HD Carrera Marble", "HD Pietra Grey", "HD Onyx"],
-      image: "https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&h=600&fit=crop"
     },
     {
       name: "Solid Surface Collection",
