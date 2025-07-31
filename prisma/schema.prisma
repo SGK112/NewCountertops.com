@@ -16,12 +16,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -44,25 +44,15 @@ model User {
   emailVerified DateTime?
   image         String?
   phone         String?
-  userType      UserType  @default(CUSTOMER)
+  password      String?
+  userType      String    @default("CUSTOMER")
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-
-  accounts  Account[]
-  sessions  Session[]
   
-  // Contractor specific fields
-  contractor  Contractor?
-  
-  // Customer specific fields
-  customer    Customer?
-  
-  // Relationships
-  sentMessages     Message[] @relation("SentMessages")
-  receivedMessages Message[] @relation("ReceivedMessages")
-  reviews          Review[]
-  bookings         Booking[]
-  quotes           Quote[]
+  accounts   Account[]
+  sessions   Session[]
+  customer   Customer?
+  contractor Contractor?
 }
 
 model VerificationToken {
@@ -73,203 +63,200 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Contractor {
-  id              String    @id @default(cuid())
-  userId          String    @unique
-  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  businessName    String
-  description     String?   @db.Text
-  serviceArea     String[]
-  specialties     String[]
-  yearsExperience Int
-  licenseNumber   String?
-  insuranceInfo   String?   @db.Text
-  website         String?
-  isVerified      Boolean   @default(false)
-  rating          Float?
-  totalJobs       Int       @default(0)
-  totalReviews    Int       @default(0)
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-
-  portfolio     Portfolio[]
-  quotes        Quote[]     @relation("ContractorQuotes")
-  bookings      Booking[]
-  reviews       Review[]    @relation("ContractorReviews")
-  availability  Availability[]
-}
-
 model Customer {
   id        String   @id @default(cuid())
   userId    String   @unique
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName String
+  lastName  String
+  phone     String?
   address   String?
+  city      String?
+  state     String?
+  zipCode   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  quotes   Quote[]
-  bookings Booking[]
-  reviews  Review[] @relation("CustomerReviews")
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quotes          Quote[]
+  reviews         Review[]
+  savedContractors SavedContractor[]
+  bookings        Booking[]
+  payments        Payment[]
+}
+
+model Contractor {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  businessName    String
+  description     String?
+  serviceArea     String    // JSON string for SQLite
+  specialties     String    // JSON string for SQLite
+  yearsExperience Int
+  licenseNumber   String?
+  insuranceInfo   String?
+  phone           String
+  website         String?
+  address         String
+  city            String
+  state           String
+  zipCode         String
+  latitude        Float?
+  longitude       Float?
+  isVerified      Boolean   @default(false)
+  rating          Float     @default(0.0)
+  reviewCount     Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quotes           Quote[]
+  portfolio        Portfolio[]
+  reviews          Review[]
+  savedBy          SavedContractor[]
+  bookings         Booking[]
+  payments         Payment[]
+}
+
+model SavedContractor {
+  id           String @id @default(cuid())
+  customerId   String
+  contractorId String
+  createdAt    DateTime @default(now())
+
+  customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  contractor Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
+
+  @@unique([customerId, contractorId])
 }
 
 model Portfolio {
-  id           String     @id @default(cuid())
+  id          String   @id @default(cuid())
   contractorId String
-  contractor   Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
   title        String
-  description  String?    @db.Text
-  images       String[]
+  description  String?
+  images       String    // JSON string for SQLite
   projectType  String
-  materials    String[]
+  materials    String    // JSON string for SQLite
   cost         Float?
-  duration     String?
   completedAt  DateTime?
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
+
+  contractor Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
 }
 
 model Quote {
-  id           String      @id @default(cuid())
-  userId       String
-  user         User        @relation(fields: [userId], references: [id])
-  customerId   String?
-  customer     Customer?   @relation(fields: [customerId], references: [id])
-  contractorId String
-  contractor   Contractor  @relation("ContractorQuotes", fields: [contractorId], references: [id])
-  
+  id            String      @id @default(cuid())
+  customerId    String
+  contractorId  String
   projectType   String
-  description   String      @db.Text
+  description   String
   squareFootage Float?
-  materials     String[]
+  materials     String      // JSON string for SQLite
   location      String
-  timeframe     String?
   budget        Float?
-  
+  timeline      String?
+  status        String      @default("PENDING")
   estimatedCost Float?
-  notes         String?     @db.Text
-  status        QuoteStatus @default(PENDING)
+  notes         String?
   validUntil    DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  contractor Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
+  booking    Booking?
   
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
-  booking Booking?
+  @@index([customerId])
+  @@index([contractorId])
+  @@index([status])
 }
 
 model Booking {
-  id           String        @id @default(cuid())
-  userId       String
-  user         User          @relation(fields: [userId], references: [id])
-  customerId   String?
-  customer     Customer?     @relation(fields: [customerId], references: [id])
-  contractorId String
-  contractor   Contractor    @relation(fields: [contractorId], references: [id])
-  quoteId      String        @unique
-  quote        Quote         @relation(fields: [quoteId], references: [id])
+  id              String   @id @default(cuid())
+  customerId      String
+  contractorId    String
+  quoteId         String   @unique
+  scheduledDate   DateTime
+  estimatedHours  Float?
+  status          String   @default("SCHEDULED")
+  notes           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  contractor Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
+  quote      Quote      @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  payments   Payment[]
   
-  scheduledDate DateTime
-  status        BookingStatus @default(SCHEDULED)
-  totalCost     Float
-  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
-  payments Payment[]
+  @@index([customerId])
+  @@index([contractorId])
+  @@index([scheduledDate])
 }
 
 model Payment {
-  id        String        @id @default(cuid())
-  bookingId String
-  booking   Booking       @relation(fields: [bookingId], references: [id])
+  id            String   @id @default(cuid())
+  customerId    String
+  contractorId  String
+  bookingId     String?
+  amount        Float
+  stripePaymentIntentId String?
+  status        String   @default("PENDING")
+  paymentType   String   @default("FULL")
+  paidAt        DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  contractor Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
+  booking    Booking?   @relation(fields: [bookingId], references: [id])
   
-  amount       Float
-  currency     String    @default("USD")
-  status       PaymentStatus @default(PENDING)
-  stripeId     String?
-  type         PaymentType
-  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  @@index([customerId])
+  @@index([contractorId])
+  @@index([status])
 }
 
 model Review {
-  id           String     @id @default(cuid())
-  userId       String
-  user         User       @relation(fields: [userId], references: [id])
-  customerId   String?
-  customer     Customer?  @relation("CustomerReviews", fields: [customerId], references: [id])
+  id           String    @id @default(cuid())
+  customerId   String
   contractorId String
-  contractor   Contractor @relation("ContractorReviews", fields: [contractorId], references: [id])
+  rating       Int
+  title        String?
+  comment      String?
+  images       String    // JSON string for SQLite
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  contractor Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
   
-  rating    Int
-  title     String?
-  comment   String? @db.Text
-  images    String[]
-  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  @@index([contractorId])
+  @@index([rating])
 }
 
 model Message {
-  id         String   @id @default(cuid())
-  senderId   String
-  sender     User     @relation("SentMessages", fields: [senderId], references: [id])
-  receiverId String
-  receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  id           String   @id @default(cuid())
+  senderId     String
+  receiverId   String
   
-  content   String   @db.Text
+  content   String
   read      Boolean  @default(false)
-  
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Availability {
-  id           String     @id @default(cuid())
-  contractorId String
-  contractor   Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)
   
-  dayOfWeek Int // 0 = Sunday, 1 = Monday, etc.
-  startTime String // HH:MM format
-  endTime   String // HH:MM format
-  isActive  Boolean @default(true)
+  @@index([senderId])
+  @@index([receiverId])
+  @@index([createdAt])
+}
+
+model Material {
+  id          String @id @default(cuid())
+  name        String @unique
+  category    String
+  description String?
+  imageUrl    String?
+  priceRange  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
-  @@unique([contractorId, dayOfWeek])
-}
-
-enum UserType {
-  CUSTOMER
-  CONTRACTOR
-  ADMIN
-}
-
-enum QuoteStatus {
-  PENDING
-  ACCEPTED
-  DECLINED
-  EXPIRED
-}
-
-enum BookingStatus {
-  SCHEDULED
-  IN_PROGRESS
-  COMPLETED
-  CANCELLED
-}
-
-enum PaymentStatus {
-  PENDING
-  PROCESSING
-  COMPLETED
-  FAILED
-  REFUNDED
-}
-
-enum PaymentType {
-  DEPOSIT
-  FINAL
-  FULL
+  @@index([category])
 }

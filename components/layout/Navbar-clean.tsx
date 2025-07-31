@@ -63,11 +63,11 @@ export function Navbar() {
                             Browse
                         </Link>
                         <Link
-                            href="/matches"
-                            className="text-slate-700 hover:text-pink-600 hover:bg-pink-50 px-4 py-2 text-sm font-medium transition-all rounded-lg border border-transparent hover:border-pink-200 flex items-center"
+                            href="/saved-contractors"
+                            className="text-slate-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 text-sm font-medium transition-all rounded-lg border border-transparent hover:border-blue-200 flex items-center"
                         >
-                            <Heart className="w-4 h-4 mr-1.5" />
-                            Match
+                            <Users className="w-4 h-4 mr-1.5" />
+                            Saved
                         </Link>
                         <Link
                             href="/quote"
@@ -135,12 +135,12 @@ export function Navbar() {
                         </Link>
 
                         <Link
-                            href="/matches"
-                            className="flex items-center px-4 py-3.5 text-base font-medium text-slate-700 hover:text-pink-600 hover:bg-pink-50 rounded-lg border border-transparent hover:border-pink-200 transition-all"
+                            href="/saved-contractors"
+                            className="flex items-center px-4 py-3.5 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg border border-transparent hover:border-blue-200 transition-all"
                             onClick={() => setIsOpen(false)}
                         >
-                            <Heart className="w-5 h-5 mr-3 text-slate-400" />
-                            Find Matches
+                            <Users className="w-5 h-5 mr-3 text-slate-400" />
+                            Saved Contractors
                         </Link>
 
                         <Link

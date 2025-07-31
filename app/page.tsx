@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Heart, Search, Users, MessageCircle, Star, ArrowRight } from 'lucide-react'
+import { Search, Users, MessageCircle, Star, ArrowRight } from 'lucide-react'
 
 export default function HomePage() {
   return (
@@ -44,11 +44,11 @@ export default function HomePage() {
             {/* Mobile-optimized CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4 sm:px-0">
               <Link
-                href="/matches"
+                href="/contractors"
                 className="btn-primary text-base sm:text-lg flex items-center justify-center order-1 sm:order-none"
               >
-                <Heart className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0" />
-                <span>Find My Contractor</span>
+                <Search className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0" />
+                Find Contractors
               </Link>
               <Link
                 href="/contractors"
@@ -120,24 +120,24 @@ export default function HomePage() {
               <a href="https://www.lgviatera.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">LG Viatera</a>
               <a href="https://www.wilsonart.com/quartz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Quartz</a>
               <a href="https://www.samsung.com/us/home-appliances/kitchen-appliances/radianz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Samsung Radianz</a>
-              
+
               {/* Ultra-Compact Surfaces */}
               <a href="https://www.dekton.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Dekton by Cosentino</a>
               <a href="https://www.neolith.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Neolith</a>
               <a href="https://www.lapitec.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Lapitec</a>
-              
+
               {/* Solid Surface */}
               <a href="https://www.himacs.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HI-MACS</a>
               <a href="https://www.corian.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Corian</a>
               <a href="https://www.avonite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Avonite</a>
               <a href="https://www.staron.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Staron</a>
-              
+
               {/* Laminate Surfaces */}
               <a href="https://www.formica.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-yellow-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Formica</a>
               <a href="https://www.wilsonart.com/laminate" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-lime-600 to-lime-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Laminate</a>
               <a href="https://www.pionite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-sky-600 to-sky-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Pionite</a>
               <a href="https://www.arborite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Arborite</a>
-              
+
               {/* Additional Premium Brands */}
               <a href="https://www.quartzforms.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-stone-600 to-stone-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartzforms</a>
               <a href="https://www.vicostone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-zinc-600 to-zinc-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Vicostone</a>
@@ -218,7 +218,7 @@ export default function HomePage() {
                   <span className="text-2xl font-bold text-slate-700">2</span>
                 </div>
                 <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-slate-600 to-slate-700 rounded-full flex items-center justify-center">
-                  <Heart className="w-3 h-3 text-white" />
+                  <Users className="w-3 h-3 text-white" />
                 </div>
               </div>
               <div className="flex flex-col flex-grow">
