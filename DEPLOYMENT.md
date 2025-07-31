@@ -10,6 +10,7 @@ DATABASE_URL="your-production-database-url"
 # NextAuth.js
 NEXTAUTH_SECRET="your-production-secret-32-chars-minimum"
 NEXTAUTH_URL="https://your-domain.com"
+NODE_ENV="production"
 
 # Email (Optional - for notifications)
 EMAIL_SERVER="smtp://username:password@smtp.provider.com:587"
