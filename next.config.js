@@ -14,6 +14,12 @@ const nextConfig = {
   // Performance optimizations
   swcMinify: true,
   poweredByHeader: false,
+  // Handle SSR issues
+  experimental: {
+    serverComponentsExternalPackages: ['@prisma/client', 'bcrypt'],
+  },
+  // Output configuration for better deployment
+  output: 'standalone',
 }
 
 module.exports = nextConfig
