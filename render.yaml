@@ -3,7 +3,7 @@ services:
     name: newcountertops-web
     env: node
     plan: starter
-    buildCommand: npm ci && npm run db:generate && npm run build
+    buildCommand: npm ci --cache /tmp/empty-cache && npm run db:generate && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
@@ -14,6 +14,8 @@ services:
         fromDatabase:
           name: newcountertops-db
           property: connectionString
+      - key: CSRF_SECRET
+        generateValue: true
 
 databases:
   - name: newcountertops-db
