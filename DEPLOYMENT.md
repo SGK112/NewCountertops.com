@@ -44,9 +44,15 @@ npm run db:seed
 
 ### 3. Build Verification
 ```bash
+# Clean build (removes cache for fresh build)
+npm run build:clean
+
 # Test production build locally
 npm run build
 npm run start
+
+# Analyze bundle size (optional)
+npm run build:analyze
 
 # Verify all pages load correctly
 # Test quote form submission
