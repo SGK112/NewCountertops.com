@@ -13,6 +13,7 @@ datasource db {
 enum UserType {
   CUSTOMER
   CONTRACTOR
+  ADMIN
 }
 
 model Account {
@@ -165,22 +166,25 @@ model Portfolio {
 }
 
 model Quote {
-  id            String      @id @default(cuid())
-  customerId    String
-  contractorId  String
-  projectType   String
-  description   String
-  squareFootage Float?
-  materials     String      // JSON string for SQLite
-  location      String
-  budget        Float?
-  timeline      String?
-  status        String      @default("PENDING")
-  estimatedCost Float?
-  notes         String?
-  validUntil    DateTime?
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  id               String      @id @default(cuid())
+  customerId       String
+  contractorId     String
+  projectType      String
+  description      String
+  squareFootage    Float?
+  materials        String      // JSON string for SQLite
+  location         String
+  budget           Float?
+  timeline         String?
+  status           String      @default("PENDING")
+  estimatedCost    Float?
+  notes            String?
+  validUntil       DateTime?
+  adminModified    Boolean?    @default(false)
+  adminModifiedAt  DateTime?
+  adminModifiedBy  String?
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
 
   customer   Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
   contractor Contractor @relation(fields: [contractorId], references: [id], onDelete: Cascade)

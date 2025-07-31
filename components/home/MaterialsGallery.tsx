@@ -47,7 +47,7 @@ const materialImages: MaterialImage[] = [
   // Quartz Options
   {
     id: 'quartz-1',
-    src: 'https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=800&h=600&fit=crop&ixlib=rb-4.0.3',
+    src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&h=600&fit=crop&ixlib=rb-4.0.3',
     alt: 'Calacatta Quartz Countertop',
     title: 'Calacatta Quartz',
     category: 'quartz',

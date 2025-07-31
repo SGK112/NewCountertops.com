@@ -24,7 +24,7 @@ export default function ManufacturersPage() {
       specialties: ["Made in USA", "Family Owned", "Natural Quartz"],
       established: "2000",
       color: "purple",
-      image: "https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600&h=400&fit=crop"
     },
     {
       name: "Silestone",
@@ -54,7 +54,7 @@ export default function ManufacturersPage() {
       specialties: ["Natural Stone", "Quartz", "Porcelain Slabs"],
       established: "1995",
       color: "orange",
-      image: "https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=600&h=400&fit=crop"
     },
     {
       name: "Quartz Master",
@@ -84,7 +84,7 @@ export default function ManufacturersPage() {
       specialties: ["Laminate", "Solid Surface", "110+ Years"],
       established: "1913",
       color: "pink",
-      image: "https://images.unsplash.com/photo-1556909195-4e5d4d6e4f6f?q=80&w=600&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=600&h=400&fit=crop"
     }
   ]
 

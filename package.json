@@ -40,6 +40,7 @@
     "react-hook-form": "^7.48.2",
     "react-hot-toast": "^2.4.1",
     "react-query": "^3.39.3",
+    "sharp": "^0.33.0",
     "stripe": "^14.7.0",
     "tailwind-merge": "^2.2.0",
     "twilio": "^5.8.0",
