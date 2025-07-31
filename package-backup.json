@@ -1,6 +1,19 @@
 {
-  "name": "newcountertops-marketplace",
-  "version": "1.0.0",
+  "name": "newcountertops-marketplace",    "stripe": "^14.7.0",
+    "tailwind-merge": "^2.2.0",
+    "twilio": "^5.8.0",
+    "zod": "^3.22.4",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.38",
+    "@types/react-dom": "^18.2.17",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^14.0.4","1.0.0",
   "private": true,
   "engines": {
     "node": ">=18.0.0",
