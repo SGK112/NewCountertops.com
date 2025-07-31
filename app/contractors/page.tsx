@@ -571,7 +571,9 @@ function ContractorCard({ contractor, viewMode }: { contractor: Contractor, view
               </div>
               
               <div className="flex space-x-3">
-                <button className="btn-outline">View Profile</button>
+                <Link href={`/contractors/${contractor.id}`} className="btn-outline">
+                  View Profile
+                </Link>
                 <button className="btn-primary">Get Quote</button>
               </div>
             </div>

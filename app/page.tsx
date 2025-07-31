@@ -44,18 +44,18 @@ export default function HomePage() {
             {/* Mobile-optimized CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4 sm:px-0">
               <Link
-                href="/contractors"
+                href="/quote"
                 className="btn-primary text-base sm:text-lg flex items-center justify-center order-1 sm:order-none"
               >
-                <Search className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0" />
-                Find Contractors
+                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0" />
+                Get Free Quotes
               </Link>
               <Link
                 href="/contractors"
                 className="btn-stone text-base sm:text-lg flex items-center justify-center"
               >
                 <Search className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0" />
-                <span>Browse All Contractors</span>
+                <span>Browse Contractors</span>
               </Link>
             </div>
 
@@ -111,12 +111,12 @@ export default function HomePage() {
             <p className="text-lg font-medium text-stone-600 mb-6">Trusted by Leading Surface Manufacturers</p>
             <div className="flex flex-wrap justify-center gap-3 text-white font-medium">
               {/* Premium Quartz Brands */}
-              <a href="https://www.silestone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Silestone by Cosentino</a>
-              <a href="https://www.caesarstone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Caesarstone</a>
-              <a href="https://www.cambriausa.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Cambria</a>
-              <a href="https://www.quartzmaster.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartz Master</a>
-              <a href="https://www.msistone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">MSI Stone</a>
-              <a href="https://www.hanstone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HanStone Quartz</a>
+              <Link href="/manufacturers/silestone" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Silestone by Cosentino</Link>
+              <Link href="/manufacturers/caesarstone" className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Caesarstone</Link>
+              <Link href="/manufacturers/cambria" className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Cambria</Link>
+              <Link href="/manufacturers/quartz-master" className="px-4 py-2 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartz Master</Link>
+              <Link href="/manufacturers/msi-stone" className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">MSI Stone</Link>
+              <Link href="/manufacturers/hanstone" className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HanStone Quartz</Link>
               <a href="https://www.lgviatera.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">LG Viatera</a>
               <a href="https://www.wilsonart.com/quartz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Quartz</a>
               <a href="https://www.samsung.com/us/home-appliances/kitchen-appliances/radianz" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Samsung Radianz</a>
@@ -128,12 +128,12 @@ export default function HomePage() {
 
               {/* Solid Surface */}
               <a href="https://www.himacs.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HI-MACS</a>
-              <a href="https://www.corian.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Corian</a>
+              <Link href="/manufacturers/corian" className="px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Corian</Link>
               <a href="https://www.avonite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Avonite</a>
               <a href="https://www.staron.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Staron</a>
 
               {/* Laminate Surfaces */}
-              <a href="https://www.formica.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-yellow-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Formica</a>
+              <Link href="/manufacturers/formica" className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-yellow-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Formica</Link>
               <a href="https://www.wilsonart.com/laminate" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-lime-600 to-lime-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Laminate</a>
               <a href="https://www.pionite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-sky-600 to-sky-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Pionite</a>
               <a href="https://www.arborite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Arborite</a>
@@ -316,7 +316,7 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/matches"
+                href="/contractors/1"
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-lg text-center block transition-all duration-200 font-medium"
               >
                 View Profile & Match
@@ -355,7 +355,7 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/matches"
+                href="/contractors/2"
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-lg text-center block transition-all duration-200 font-medium"
               >
                 View Profile & Match
@@ -394,7 +394,7 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/matches"
+                href="/contractors/3"
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-lg text-center block transition-all duration-200 font-medium"
               >
                 View Profile & Match

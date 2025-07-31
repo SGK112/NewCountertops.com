@@ -64,17 +64,22 @@ model VerificationToken {
 }
 
 model Customer {
-  id        String   @id @default(cuid())
-  userId    String   @unique
-  firstName String
-  lastName  String
-  phone     String?
-  address   String?
-  city      String?
-  state     String?
-  zipCode   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  firstName         String
+  lastName          String
+  phone             String?
+  address           String?
+  city              String?
+  state             String?
+  zipCode           String?
+  propertyType      String?
+  homeSize          String?
+  preferredBudget   String?
+  projectTimeline   String?
+  preferences       String?  // JSON string for SQLite (materials, styles, features)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   quotes          Quote[]
@@ -91,17 +96,22 @@ model Contractor {
   description     String?
   serviceArea     String    // JSON string for SQLite
   specialties     String    // JSON string for SQLite
-  yearsExperience Int
+  yearsExperience Int?
   licenseNumber   String?
   insuranceInfo   String?
-  phone           String
+  phone           String?
   website         String?
-  address         String
-  city            String
-  state           String
-  zipCode         String
+  address         String?
+  city            String?
+  state           String?
+  zipCode         String?
   latitude        Float?
   longitude       Float?
+  hourlyRate      Float?
+  projectMinimum  Float?
+  certifications  String?   // JSON string for SQLite
+  availableHours  String?   // JSON string for SQLite
+  portfolioImages String?   // JSON string for SQLite
   isVerified      Boolean   @default(false)
   rating          Float     @default(0.0)
   reviewCount     Int       @default(0)

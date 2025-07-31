@@ -28,14 +28,9 @@ export default function SignInPage() {
 
       if (result?.error) {
         setError('Invalid email or password')
-      } else {
-        // Get the session to determine redirect path
-        const session = await getSession()
-        if (session?.user?.userType === 'CONTRACTOR') {
-          router.push('/dashboard/contractor')
-        } else {
-          router.push('/dashboard/customer')
-        }
+      } else if (result?.ok) {
+        // Redirect to dashboard - let the dashboard page handle role-based routing
+        router.push('/dashboard')
       }
     } catch (error) {
       setError('Something went wrong. Please try again.')

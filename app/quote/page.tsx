@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Calendar, Clock, Home, Phone, Mail, User } from 'lucide-react'
+import { Calendar, Clock, Home, Phone, Mail, User, CheckCircle, AlertCircle } from 'lucide-react'
 
 export default function QuotePage() {
   const [formData, setFormData] = useState({
@@ -22,6 +22,11 @@ export default function QuotePage() {
     preferredContactTime: 'morning'
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
+  const [matchedContractors, setMatchedContractors] = useState<any[]>([])
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -30,11 +35,56 @@ export default function QuotePage() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Quote request submitted:', formData)
-    // In a real app, this would send data to an API
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    
+    try {
+      const response = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitStatus('success')
+        setSubmitMessage('Quote request submitted successfully! We\'ve matched you with qualified contractors who will contact you soon.')
+        setMatchedContractors(result.data.matchedContractors || [])
+        
+        // Reset form
+        setFormData({
+          projectType: '',
+          timeline: '',
+          budget: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          address: '',
+          city: '',
+          state: '',
+          zipCode: '',
+          projectDescription: '',
+          squareFootage: '',
+          preferredContactMethod: 'phone',
+          preferredContactTime: 'morning'
+        })
+      } else {
+        setSubmitStatus('error')
+        setSubmitMessage(result.message || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      console.error('Quote submission error:', error)
+      setSubmitStatus('error')
+      setSubmitMessage('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -432,18 +482,67 @@ export default function QuotePage() {
                 <button
                   type="button"
                   className="btn-outline-gray"
+                  disabled={isSubmitting}
                 >
                   Save as Draft
                 </button>
                 <button
                   type="submit"
-                  className="btn-primary btn-lg"
+                  disabled={isSubmitting}
+                  className="btn-primary btn-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Get Free Quotes
+                  {isSubmitting ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span>Submitting...</span>
+                    </div>
+                  ) : (
+                    'Get Free Quotes'
+                  )}
                 </button>
               </div>
             </div>
           </form>
+
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
+            <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="flex items-center space-x-2 text-green-800">
+                <CheckCircle size={20} />
+                <div>
+                  <h4 className="font-semibold">Success!</h4>
+                  <p className="text-sm">{submitMessage}</p>
+                  {matchedContractors.length > 0 && (
+                    <div className="mt-3">
+                      <p className="text-sm font-medium mb-2">Matched Contractors:</p>
+                      <div className="space-y-2">
+                        {matchedContractors.map((contractor, index) => (
+                          <div key={index} className="text-sm bg-white p-2 rounded border">
+                            <div className="font-medium">{contractor.businessName}</div>
+                            <div className="text-gray-600">
+                              {contractor.rating}★ • {contractor.location} • Response: {contractor.estimatedResponseTime}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <div className="flex items-center space-x-2 text-red-800">
+                <AlertCircle size={20} />
+                <div>
+                  <h4 className="font-semibold">Error</h4>
+                  <p className="text-sm">{submitMessage}</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Benefits Section */}
