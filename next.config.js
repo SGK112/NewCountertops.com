@@ -47,10 +47,17 @@ const nextConfig = {
       };
     }
     
+    // Ensure TypeScript path mapping works on Render
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': require('path').resolve(__dirname),
+    };
+    
     // Optimize for production builds
     if (!dev) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
+      config.optimization = {
+        ...config.optimization,
+        sideEffects: false,
       };
     }
     

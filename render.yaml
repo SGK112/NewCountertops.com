@@ -3,7 +3,7 @@ services:
     name: newcountertops-web
     env: node
     plan: starter
-    buildCommand: npm ci --only=production --cache /tmp/empty-cache && npm run db:generate && npm run db:push && npm run build
+    buildCommand: npm run build:render
     startCommand: npm run start
     healthCheckPath: /
     envVars:
