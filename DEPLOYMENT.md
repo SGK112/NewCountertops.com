@@ -281,6 +281,20 @@ jobs:
 - **Solution**: Moved `autoprefixer`, `postcss`, and `tailwindcss` to main dependencies
 - **Status**: ✅ Resolved in latest commit (3d895b9)
 
+**Webpack Module Resolution Errors: 🔧 DEBUGGING**
+- **Issue**: "Cannot find module '@/lib/auth'" or similar path resolution errors
+- **Symptoms**: Build fails with webpack errors, modules not found
+- **Solutions Applied**:
+  - ✅ Added cache-busting to npm ci command in render.yaml
+  - ✅ Created explicit barrel exports in lib/index.ts
+  - ✅ Added debug-build.sh script for diagnostics
+- **Status**: 🔄 Latest fixes in commit (b232225) - test deployment
+
+**Debug Tools Added:**
+- Run `./debug-build.sh` to diagnose build environment issues
+- Shows Node.js version, file existence, and dependency status
+- Helps identify environment-specific problems
+
 **Build Command Not Found:**
 - Verify your `package.json` scripts section
 - Use: `npm ci && npm run db:generate && npm run build`
