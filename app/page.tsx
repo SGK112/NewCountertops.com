@@ -1,386 +1,509 @@
+import React from 'react'
 import Link from 'next/link'
-import { Search, Users, MessageCircle, Star, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { Heart, Search, Users, MessageCircle, Star, ArrowRight, Sparkles, Home, Wrench } from 'lucide-react'
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* Professional Stone-Inspired Hero Section */}
-      <div className="stone-texture bg-gradient-to-br from-stone-50 via-stone-100 to-neutral-50 py-16 sm:py-20 lg:py-24 relative overflow-hidden" style={{
-        background: 'var(--gradient-hero)'
-      }}>
-        {/* Enhanced natural stone pattern background */}
-        <div className="absolute inset-0 opacity-[0.03]">
+      {/* Blueprint-Style Hero Section with Enhanced Animations */}
+      <div className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+        {/* Enhanced geometric shapes with better animations */}
+        <div className="absolute inset-0 z-10">
+          <div className="absolute top-20 left-16 w-16 h-16 border-2 border-blue-400/20 rotate-12 blueprint-float opacity-0 animate-scale-in delay-300"></div>
+          <div className="absolute top-40 right-24 w-12 h-12 border border-blue-300/25 blueprint-float opacity-0 animate-bounce-in delay-500"></div>
+          <div className="absolute bottom-32 left-1/4 w-20 h-20 border-2 border-blue-400/15 rotate-45 blueprint-float opacity-0 animate-scale-in delay-700"></div>
+          <div className="absolute top-1/3 right-1/3 w-0 h-0 border-l-[20px] border-r-[20px] border-b-[30px] border-l-transparent border-r-transparent border-b-blue-400/20 blueprint-float opacity-0 animate-bounce-in delay-400"></div>
+          <div className="absolute top-16 right-1/2 w-8 h-8 border border-blue-200/30 rounded-full blueprint-float opacity-0 animate-scale-in delay-600"></div>
+          <div className="absolute bottom-20 right-20 w-14 h-14 border-2 border-blue-300/25 rotate-12 blueprint-float opacity-0 animate-bounce-in delay-800"></div>
+        </div>
+
+        {/* Blueprint grid background with subtle animation */}
+        <div className="absolute inset-0 opacity-5 animate-pulse-slow">
           <svg className="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="stone-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
-                <circle cx="40" cy="40" r="2" fill="var(--stone-accent-copper)" />
-                <circle cx="20" cy="20" r="1.5" fill="var(--stone-marble-gold)" opacity="0.6" />
-                <circle cx="60" cy="60" r="1.5" fill="var(--stone-accent-bronze)" opacity="0.6" />
-                <circle cx="20" cy="60" r="1" fill="var(--stone-granite-medium)" opacity="0.4" />
-                <circle cx="60" cy="20" r="1" fill="var(--stone-accent-copper)" opacity="0.4" />
-                <circle cx="10" cy="40" r="0.8" fill="var(--stone-marble-gold)" opacity="0.3" />
-                <circle cx="70" cy="40" r="0.8" fill="var(--stone-accent-gold)" opacity="0.3" />
+              <pattern id="blueprint-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#3b82f6" strokeWidth="0.5" />
+                <circle cx="0" cy="0" r="1" fill="#3b82f6" opacity="0.3" />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#stone-pattern)" />
+            <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center">
-            {/* Mobile-optimized headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-              AI-Powered <span className="text-gradient">Home Remodeling</span>
-              <br />
-              <span className="text-blue-600 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">Platform</span>
-            </h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content with Staggered Animations */}
+            <div className="text-left">
+              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-blue-200/20 rounded-full mb-6 opacity-0 animate-slide-in-left delay-100">
+                <Sparkles className="w-4 h-4 text-blue-400 mr-2 animate-pulse" />
+                <span className="text-sm font-medium text-slate-700">AI-Powered Contractor Matching</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight opacity-0 animate-slide-in-left delay-200">
+                <span className="text-blue-600 animate-glow-pulse">AI-Powered</span> Contractor
+                <br />
+                <span className="opacity-0 animate-slide-in-left delay-400">Matching</span> <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent opacity-0 animate-slide-in-left delay-500">Made Simple</span>
+              </h1>
+              
+              <p className="text-xl text-slate-600 mb-8 max-w-xl leading-relaxed opacity-0 animate-slide-in-left delay-600">
+                REMODELY.AI connects homeowners with pre-vetted contractors using advanced AI matching algorithms. 
+                Get matched with the perfect contractor for your remodeling project in minutes, not weeks.
+              </p>
 
-            {/* Mobile-first description */}
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
-              Connect with verified contractors using intelligent matching technology for kitchens, bathrooms, flooring, and complete home renovations.
-              <span className="block mt-2 font-medium text-blue-700">Smart matching meets expert craftsmanship.</span>
-            </p>
-
-            {/* Mobile-optimized CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4 sm:px-0">
-              <Link
-                href="/quote"
-                className="btn-primary text-base sm:text-lg flex items-center justify-center order-1 sm:order-none"
-              >
-                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0" />
-                Get Free Quotes
-              </Link>
-              <Link
-                href="/contractors"
-                className="btn-stone text-base sm:text-lg flex items-center justify-center"
-              >
-                <Search className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0" />
-                <span>Browse Contractors</span>
-              </Link>
+              {/* CTA Buttons with Enhanced Animations */}
+              <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-slide-in-bottom delay-700">
+                <Link
+                  href="/matches"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-lg rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl border-2 border-white/20 animate-glow-pulse"
+                >
+                  <Sparkles className="w-6 h-6 mr-3 animate-pulse" />
+                  Get AI Match
+                </Link>
+                <Link
+                  href="/contractors"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold text-lg rounded-xl hover:bg-gray-50 transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl border-2 border-blue-200 hover:border-blue-300"
+                >
+                  <Search className="w-6 h-6 mr-3" />
+                  Browse Contractors
+                </Link>
+              </div>
             </div>
 
-            {/* Professional Stats with Enhanced Stone Colors */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
-              <div className="text-center card card-hover" style={{
-                background: 'linear-gradient(135deg, var(--stone-quartz-white) 0%, var(--stone-quartz-pearl) 50%, var(--stone-marble-beige) 100%)',
-                borderColor: 'rgba(212, 175, 55, 0.25)'
-              }}>
-                <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2">500+</div>
-                <div className="font-semibold text-sm sm:text-base" style={{ color: 'var(--stone-granite-dark)' }}>Certified Fabricators</div>
-                <div className="text-xs sm:text-sm mt-1" style={{ color: 'var(--stone-granite-medium)' }}>Premium stone specialists</div>
+            {/* Right Content - Professional Kitchen with Enhanced Animation */}
+            <div className="relative opacity-0 animate-slide-in-right delay-300">
+              <div className="relative bg-white/5 backdrop-blur-sm border border-blue-200/20 rounded-2xl overflow-hidden shadow-2xl animate-glow-pulse">
+                <div className="absolute top-4 left-4 flex items-center gap-2 z-10 opacity-0 animate-scale-in delay-500">
+                  <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse delay-100"></div>
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse delay-200"></div>
+                </div>
+                
+                <div className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 animate-slide-in-left delay-600">
+                  <span className="text-xs font-medium text-slate-700">Premium Remodeling</span>
+                </div>
+                
+                <div className="relative overflow-hidden rounded-2xl">
+                  <Image
+                    src="/kitchen-white-modern.jpg"
+                    alt="Beautiful modern kitchen with white cabinets, marble countertops and professional lighting - the quality of work REMODELY.AI contractors deliver"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover transform transition-transform duration-1000 hover:scale-110"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+                
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6 opacity-0 animate-slide-in-bottom delay-800">
+                  <div className="text-white">
+                    <h3 className="text-lg font-semibold mb-1">Premium Kitchen Transformation</h3>
+                    <p className="text-sm text-white/90">AI-matched contractors deliver exceptional results</p>
+                  </div>
+                </div>
               </div>
-              <div className="text-center card card-hover" style={{
-                background: 'linear-gradient(135deg, var(--stone-quartz-white) 0%, #f0fdf4 50%, #dcfce7 100%)',
-                borderColor: 'rgba(34, 197, 94, 0.25)'
-              }}>
-                <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--stone-granite-brown)' }}>98%</div>
-                <div className="font-semibold text-sm sm:text-base" style={{ color: 'var(--stone-granite-dark)' }}>Client Satisfaction</div>
-                <div className="text-xs sm:text-sm mt-1" style={{ color: 'var(--stone-granite-medium)' }}>Quality guaranteed</div>
-              </div>
-              <div className="text-center card card-hover sm:col-span-1 col-span-1" style={{
-                background: 'linear-gradient(135deg, var(--stone-quartz-white) 0%, #fffbeb 50%, #fef3c7 100%)',
-                borderColor: 'rgba(205, 127, 50, 0.25)'
-              }}>
-                <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--stone-accent-copper)' }}>$5M+</div>
-                <div className="font-semibold text-sm sm:text-base" style={{ color: 'var(--stone-granite-dark)' }}>Projects Delivered</div>
-                <div className="text-xs sm:text-sm mt-1" style={{ color: 'var(--stone-granite-medium)' }}>Professional installations</div>
-              </div>
+              
+              {/* Additional floating elements around the image */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full backdrop-blur-sm opacity-0 animate-bounce-in delay-700"></div>
+              <div className="absolute -bottom-6 -left-6 w-12 h-12 border-2 border-blue-400/30 rounded-full opacity-0 animate-scale-in delay-900"></div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Trusted Professionals Section */}
-      <div className="py-12 sm:py-16 lg:py-20 border-t bg-gradient-to-b from-gray-50 to-white">
+      {/* Trusted Brands Section */}
+      <div className="py-20 bg-slate-50 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-900">
-              Trusted by Leading Home Improvement Professionals
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Trusted by Leading Contractors & Homeowners
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Our AI-powered platform connects homeowners with vetted contractors across all remodeling categories
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our AI-powered platform connects homeowners with verified contractors across all remodeling specialties
             </p>
           </div>
 
-          {/* Service Categories */}
-          <div className="text-center py-8">
-            <p className="text-lg font-medium text-gray-600 mb-6">Expert Contractors Across All Categories</p>
-            <div className="flex flex-wrap justify-center gap-3 text-white font-medium">
-              {/* Home Remodeling Categories */}
-              <div className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-sm">Kitchen Remodeling</div>
-              <div className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-sm">Bathroom Renovation</div>
-              <div className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-sm">Flooring Installation</div>
-              <div className="px-4 py-2 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg shadow-sm">Countertops</div>
-              <Link href="/manufacturers/msi-stone" className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">MSI Stone</Link>
-              <Link href="/manufacturers/hanstone" className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HanStone Quartz</Link>
-              <Link href="/manufacturers/lg-viatera" className="px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">LG Viatera</Link>
-              <Link href="/manufacturers/wilsonart-quartz" className="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Quartz</Link>
-              <Link href="/manufacturers/samsung-radianz" className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Samsung Radianz</Link>
-
-              <div className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg shadow-sm">Roofing & Siding</div>
-              <div className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg shadow-sm">Electrical</div>
-              <div className="px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 rounded-lg shadow-sm">Plumbing</div>
-              <div className="px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 rounded-lg shadow-sm">HVAC</div>
+          {/* Brand Logos Grid */}
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+              <div className="flex justify-center group">
+                <Image 
+                  src="/caesarstone-logo.png" 
+                  alt="Caesarstone - Premium Quartz Surfaces" 
+                  width={120} 
+                  height={60} 
+                  className="h-12 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" 
+                />
+              </div>
+              <div className="flex justify-center group">
+                <Image 
+                  src="/cambria-logo.png" 
+                  alt="Cambria - Natural Quartz Surfaces" 
+                  width={120} 
+                  height={60} 
+                  className="h-12 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" 
+                />
+              </div>
+              <div className="flex justify-center group">
+                <Image 
+                  src="/silestone-logo.jpg" 
+                  alt="Silestone - Engineered Stone" 
+                  width={120} 
+                  height={60} 
+                  className="h-12 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" 
+                />
+              </div>
+              <div className="flex justify-center group">
+                <Image 
+                  src="/quartz-master-logo.png" 
+                  alt="Quartz Master - Premium Stone Solutions" 
+                  width={120} 
+                  height={60} 
+                  className="h-12 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" 
+                />
+              </div>
+              <div className="flex justify-center group">
+                <div className="text-slate-400 group-hover:text-slate-600 font-semibold text-lg transition-colors duration-300 opacity-70 group-hover:opacity-100">MSI Stone</div>
+              </div>
+              <div className="flex justify-center group">
+                <div className="text-slate-400 group-hover:text-slate-600 font-semibold text-lg transition-colors duration-300 opacity-70 group-hover:opacity-100">Hanstone</div>
+              </div>
             </div>
           </div>
 
-          {/* Competitive Advantages */}
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center card p-6 bg-gradient-to-br from-white to-blue-50">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">AI-Powered Matching</h3>
-              <p className="text-sm text-gray-600">Smart algorithms match you with the perfect contractor based on your project needs, location, and preferences.</p>
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
+            <div className="text-center bg-white/50 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-white/20">
+              <div className="text-4xl font-bold text-blue-600 mb-2">10K+</div>
+              <div className="text-gray-600 font-medium">Verified Contractors</div>
             </div>
-            
-            <div className="text-center card p-6 bg-gradient-to-br from-white to-green-50">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Pay-As-You-Go Pricing</h3>
-              <p className="text-sm text-gray-600">No monthly fees or hidden costs. Contractors only pay when they get matched with real project leads.</p>
+            <div className="text-center bg-white/50 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-white/20">
+              <div className="text-4xl font-bold text-slate-600 mb-2">100K+</div>
+              <div className="text-gray-600 font-medium">Successful Matches</div>
             </div>
-            
-            <div className="text-center card p-6 bg-gradient-to-br from-white to-purple-50">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Verified Reviews</h3>
-              <p className="text-sm text-gray-600">Real reviews from real customers. Every review is verified to ensure authentic feedback and trustworthy ratings.</p>
+            <div className="text-center bg-white/50 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-white/20">
+              <div className="text-4xl font-bold text-green-600 mb-2">95%</div>
+              <div className="text-gray-600 font-medium">Match Satisfaction</div>
+            </div>
+            <div className="text-center bg-white/50 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-white/20">
+              <div className="text-4xl font-bold text-purple-600 mb-2">24hrs</div>
+              <div className="text-gray-600 font-medium">Average Match Time</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Professional Process Section */}
-      <div className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      {/* How It Works Section */}
+      <div className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-              AI-Powered Home Remodeling Process
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              How REMODELY.AI Works
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Our certified fabricators follow industry best practices for flawless results
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our AI-powered matching system finds the perfect contractor for your specific project needs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 xl:gap-8">
-            {/* Step 1 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-blue-600">1</span>
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center group hover:bg-slate-50 p-8 rounded-2xl transition-all border border-transparent hover:border-blue-100">
+              <div className="relative w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Sparkles className="w-8 h-8" />
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
               </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Project Consultation</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Share your vision, material preferences, budget, and timeline with certified fabricators</p>
-                <Link href="/signup" className="btn-primary text-sm inline-flex items-center justify-center mt-auto">
-                  Get Started <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Tell Our AI Your Needs</h3>
+              <p className="text-gray-600">
+                Share your project details, budget, timeline, and preferences. Our AI analyzes your requirements and matches you with ideal contractors.
+              </p>
+              <div className="mt-4 text-sm text-blue-600 font-medium">Smart Analysis in Seconds</div>
             </div>
 
-            {/* Step 2 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-slate-700">2</span>
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-slate-600 to-slate-700 rounded-full flex items-center justify-center">
-                  <Users className="w-3 h-3 text-white" />
-                </div>
+            <div className="text-center group hover:bg-slate-50 p-8 rounded-2xl transition-all border border-transparent hover:border-green-100">
+              <div className="relative w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-8 h-8" />
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold">2</div>
               </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Expert Matching</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Our algorithm connects you with specialized stone contractors in your area</p>
-                <Link href="/matches" className="btn-secondary text-sm inline-flex items-center justify-center mt-auto">
-                  View Matches <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Get Smart Matches</h3>
+              <p className="text-gray-600">
+                Receive 3-5 AI-selected contractor matches based on your specific needs, location, and project requirements. All contractors are pre-vetted.
+              </p>
+              <div className="mt-4 text-sm text-green-600 font-medium">Verified Professionals Only</div>
             </div>
 
-            {/* Step 3 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-blue-600">3</span>
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                  <MessageCircle className="w-3 h-3 text-white" />
-                </div>
+            <div className="text-center group hover:bg-slate-50 p-8 rounded-2xl transition-all border border-transparent hover:border-purple-100">
+              <div className="relative w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Star className="w-8 h-8" />
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs font-bold">3</div>
               </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Compare Proposals</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Review portfolios, get detailed quotes, and chat directly with fabricators</p>
-                <Link href="/quote" className="btn-primary text-sm inline-flex items-center justify-center mt-auto">
-                  Get Quotes <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="flex flex-col items-center text-center group h-full">
-              <div className="relative mb-6 flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-2xl font-bold text-slate-700">4</span>
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-slate-600 to-slate-700 rounded-full flex items-center justify-center">
-                  <Star className="w-3 h-3 text-white" />
-                </div>
-              </div>
-              <div className="flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Professional Installation</h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow">Book your project and enjoy expert fabrication and flawless installation</p>
-                <Link href="/contractors" className="btn-secondary text-sm inline-flex items-center justify-center mt-auto">
-                  Find Contractors <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect & Complete</h3>
+              <p className="text-gray-600">
+                Review contractor profiles, read verified reviews, and connect directly. Our platform tracks your project from start to finish.
+              </p>
+              <div className="mt-4 text-sm text-purple-600 font-medium">End-to-End Support</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Featured Contractors */}
+      {/* Materials Gallery Section */}
       <div className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Featured Certified Contractors
+              Remodeling Services We Cover
             </h2>
             <p className="text-xl text-gray-600">
-              Premium stone specialists with verified credentials and outstanding portfolios
+              From kitchens to bathrooms, our AI matches you with specialists in every remodeling category
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Contractor 1 */}
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face"
-                  alt="Carlos Rivera"
-                  className="w-14 h-14 rounded-full mr-4 border-2 border-blue-100"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Kitchen Remodeling */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group opacity-0 animate-slide-in-bottom delay-200">
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src="/kitchen-luxury.jpg"
+                  alt="Luxury kitchen remodeling with marble countertops, white cabinets, and pendant lighting"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900">Carlos Rivera</h3>
-                  <p className="text-sm text-blue-600 font-medium">Desert Stone Works</p>
-                  <p className="text-xs text-gray-500">Licensed • Insured • 15+ Years</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-slate-700">Premium Kitchens</span>
                 </div>
               </div>
-              <div className="flex items-center mb-3">
-                <div className="flex items-center mr-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span className="ml-1 font-semibold text-gray-900">4.9</span>
-                  <span className="ml-2 text-gray-600 text-sm">(142 reviews)</span>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Kitchen Remodeling</h3>
+                <p className="text-gray-600 mb-4">Complete kitchen renovations, countertops, cabinets, and appliance installation.</p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                  <span>AI-Matched Specialists</span>
                 </div>
               </div>
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-1 mb-3">
-                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">Granite</span>
-                  <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">Outdoor Kitchens</span>
-                  <span className="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded-full">Commercial</span>
-                </div>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  Master craftsman specializing in heat-resistant granite solutions and luxury outdoor kitchen installations. Arizona's premier stone contractor.
-                </p>
-              </div>
-              <Link
-                href="/contractors/1"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-lg text-center block transition-all duration-200 font-medium"
-              >
-                View Profile & Match
-              </Link>
             </div>
 
-            {/* Contractor 2 */}
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=60&h=60&fit=crop&crop=face"
-                  alt="Amanda Foster"
-                  className="w-14 h-14 rounded-full mr-4 border-2 border-blue-100"
+            {/* Bathroom Remodeling */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group opacity-0 animate-slide-in-bottom delay-400">
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src="/bathroom-modern.jpg"
+                  alt="Modern bathroom remodeling with elegant tiles, fixtures, and lighting"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900">Amanda Foster</h3>
-                  <p className="text-sm text-blue-600 font-medium">Scottsdale Granite & Marble</p>
-                  <p className="text-xs text-gray-500">Licensed • Insured • 12+ Years</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-slate-700">Spa Bathrooms</span>
                 </div>
               </div>
-              <div className="flex items-center mb-3">
-                <div className="flex items-center mr-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span className="ml-1 font-semibold text-gray-900">4.8</span>
-                  <span className="ml-2 text-gray-600 text-sm">(96 reviews)</span>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Bathroom Remodeling</h3>
+                <p className="text-gray-600 mb-4">Full bathroom renovations, tile work, plumbing, and fixture installations.</p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                  <span>Certified Professionals</span>
                 </div>
               </div>
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-1 mb-3">
-                  <span className="bg-pink-100 text-pink-800 text-xs font-medium px-2 py-1 rounded-full">Marble</span>
-                  <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">Luxury Design</span>
-                  <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded-full">Custom Work</span>
-                </div>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  Award-winning luxury stone fabrication specialist. Expert in Italian marble, exotic granite, and bespoke countertop designs for high-end homes.
-                </p>
-              </div>
-              <Link
-                href="/contractors/2"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-lg text-center block transition-all duration-200 font-medium"
-              >
-                View Profile & Match
-              </Link>
             </div>
 
-            {/* Contractor 3 */}
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&h=60&fit=crop&crop=face"
-                  alt="Rachel Kim"
-                  className="w-14 h-14 rounded-full mr-4 border-2 border-blue-100"
+            {/* Living Room Renovation */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group opacity-0 animate-slide-in-bottom delay-600">
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src="/living-room-modern.jpg"
+                  alt="Modern living room renovation with contemporary furniture and elegant design"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900">Rachel Kim</h3>
-                  <p className="text-sm text-blue-600 font-medium">Phoenix Premier Surfaces</p>
-                  <p className="text-xs text-gray-500">Licensed • Insured • 18+ Years</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-slate-700">Living Spaces</span>
                 </div>
               </div>
-              <div className="flex items-center mb-3">
-                <div className="flex items-center mr-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span className="ml-1 font-semibold text-gray-900">4.9</span>
-                  <span className="ml-2 text-gray-600 text-sm">(134 reviews)</span>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Living Room Renovation</h3>
+                <p className="text-gray-600 mb-4">Complete living space transformations, flooring, lighting, and design services.</p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                  <span>Design Excellence</span>
                 </div>
               </div>
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-1 mb-3">
-                  <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded-full">Quartz</span>
-                  <span className="bg-emerald-100 text-emerald-800 text-xs font-medium px-2 py-1 rounded-full">Modern Design</span>
-                  <span className="bg-orange-100 text-orange-800 text-xs font-medium px-2 py-1 rounded-full">Eco-Friendly</span>
+            </div>
+
+            {/* Roofing */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group opacity-0 animate-slide-in-bottom delay-300">
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src="/roofing-professional.jpg"
+                  alt="Professional roofing and exterior work showing quality craftsmanship and materials"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-slate-700">Expert Roofing</span>
                 </div>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  Innovative modern kitchen specialist focusing on sustainable quartz installations and cutting-edge design solutions. Multiple industry awards winner.
-                </p>
               </div>
-              <Link
-                href="/contractors/3"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-lg text-center block transition-all duration-200 font-medium"
-              >
-                View Profile & Match
-              </Link>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Roofing & Exteriors</h3>
+                <p className="text-gray-600 mb-4">Roof replacement, repair, siding, and exterior home improvements.</p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                  <span>Licensed & Insured</span>
+                </div>
+              </div>
+            </div>
+
+            {/* HVAC */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group opacity-0 animate-slide-in-bottom delay-500">
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src="/hvac-electrical.jpg"
+                  alt="Professional HVAC and electrical installation work showing technical expertise"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-slate-700">HVAC & Electrical</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">HVAC & Electrical</h3>
+                <p className="text-gray-600 mb-4">Heating, cooling, electrical work, and smart home installations.</p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                  <span>Expert Technicians</span>
+                </div>
+              </div>
+            </div>
+
+            {/* General Contracting */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group opacity-0 animate-slide-in-bottom delay-700">
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src="/general-contracting.jpg"
+                  alt="Professional general contracting and construction work showing comprehensive building expertise"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-slate-700">Full Service</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">General Contracting</h3>
+                <p className="text-gray-600 mb-4">Full home renovations, additions, and custom construction projects.</p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                  <span>Project Management</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/contractors"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg"
+            >
+              <ArrowRight className="w-5 h-5 mr-2" />
+              Find Specialists for Your Project
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Success Stories Section - Inspired by Houzz */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Hear From the People Behind the Projects
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real stories from contractors and homeowners who found success through REMODELY.AI
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Contractor Success Story */}
+                        {/* Contractor Success Story */}
+            <div className="bg-blue-50 rounded-2xl p-8 text-center">
+              <div className="w-20 h-20 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  MG
+                </div>
+              </div>
+              <blockquote className="text-lg text-gray-700 mb-6 italic">
+                "REMODELY.AI connects us with homeowners who value quality stone fabrication. We've maintained our 5.0 rating with 549+ reviews!"
+              </blockquote>
+              <div className="text-sm text-gray-600">
+                <div className="font-semibold">Mirage Marble & Granite</div>
+                <div>Stone Fabrication Specialists, Peoria, AZ</div>
+                <div className="text-blue-600 mt-2">Family Business Since 2008</div>
+              </div>
+            </div>
+
+            {/* Homeowner Success Story */}
+            <div className="bg-green-50 rounded-2xl p-8 text-center">
+              <div className="w-20 h-20 bg-green-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  MM
+                </div>
+              </div>
+              <blockquote className="text-lg text-gray-700 mb-6 italic">
+                "Mirage Marble & Granite transformed our kitchen beyond expectations! Perfect 5-star rating and incredible craftsmanship."
+              </blockquote>
+              <div className="text-sm text-gray-600">
+                <div className="font-semibold">Maria Martinez</div>
+                <div>Homeowner, Peoria, AZ</div>
+                <div className="text-green-600 mt-2">Kitchen Remodel Completed</div>
+              </div>
+            </div>
+
+            {/* Business Growth Story */}
+            <div className="bg-purple-50 rounded-2xl p-8 text-center">
+              <div className="w-20 h-20 bg-purple-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  RL
+                </div>
+              </div>
+              <blockquote className="text-lg text-gray-700 mb-6 italic">
+                "We've grown from $500K to $2M in revenue using REMODELY.AI. The platform brings us exactly the right clients."
+              </blockquote>
+              <div className="text-sm text-gray-600">
+                <div className="font-semibold">Robert Lee</div>
+                <div>Premier Construction Group</div>
+                <div className="text-purple-600 mt-2">150+ Projects Completed</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-2xl font-bold text-blue-600 mb-2">4.9/5</div>
+              <div className="text-sm text-gray-600">Average Rating</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-green-600 mb-2">24hr</div>
+              <div className="text-sm text-gray-600">Response Time</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-purple-600 mb-2">100%</div>
+              <div className="text-sm text-gray-600">Verified Reviews</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-orange-600 mb-2">$10M+</div>
+              <div className="text-sm text-gray-600">Projects Facilitated</div>
             </div>
           </div>
         </div>
@@ -391,51 +514,47 @@ export default function HomePage() {
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
         </div>
 
-        <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Ready to Transform Your Space with AI?
-            <span className="block text-blue-400">Premium Stone Surfaces?</span>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Find Your Perfect Contractor?
           </h2>
-          <p className="text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of homeowners who've found their ideal stone contractor through our professional matching platform.
-            Get connected with certified experts who deliver exceptional results.
+          <p className="text-xl text-blue-100 mb-10 max-w-3xl mx-auto">
+            Join thousands of homeowners who found their ideal contractor through REMODELY.AI. 
+            Let our AI match you with pre-vetted professionals in minutes.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/signup"
-              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
+              href="/matches"
+              className="bg-white text-slate-900 hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105 flex items-center justify-center shadow-lg"
             >
-              Start Your Project Today
+              <Sparkles className="w-6 h-6 mr-2 text-blue-500" />
+              Get AI Match Now
             </Link>
             <Link
-              href="/signup/contractor"
-              className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 backdrop-blur-sm"
+              href="/contractors"
+              className="border-2 border-white text-white hover:bg-white hover:text-slate-900 font-semibold py-4 px-8 rounded-lg text-lg transition-all flex items-center justify-center"
             >
-              Join as Professional Contractor
+              <MessageCircle className="w-6 h-6 mr-2" />
+              Browse All Contractors
             </Link>
           </div>
 
-          {/* Trust Indicators */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="text-blue-400">
-              <div className="text-2xl font-bold">Licensed</div>
-              <div className="text-sm text-slate-400">Verified Professionals</div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold text-white mb-2">AI-Powered</div>
+              <div className="text-blue-200">Smart matching algorithms</div>
             </div>
-            <div className="text-green-400">
-              <div className="text-2xl font-bold">Insured</div>
-              <div className="text-sm text-slate-400">Full Coverage Protection</div>
+            <div>
+              <div className="text-3xl font-bold text-white mb-2">Pre-Vetted</div>
+              <div className="text-blue-200">All contractors verified</div>
             </div>
-            <div className="text-purple-400">
-              <div className="text-2xl font-bold">Bonded</div>
-              <div className="text-sm text-slate-400">Quality Guaranteed</div>
-            </div>
-            <div className="text-yellow-400">
-              <div className="text-2xl font-bold">24/7</div>
-              <div className="text-sm text-slate-400">Support Available</div>
+            <div>
+              <div className="text-3xl font-bold text-white mb-2">Fast Results</div>
+              <div className="text-blue-200">Matches in under 24 hours</div>
             </div>
           </div>
         </div>
