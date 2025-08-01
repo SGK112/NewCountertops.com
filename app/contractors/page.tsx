@@ -5,6 +5,7 @@ import { Search, MapPin, Star, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useLocation } from '@/components/providers/LocationProvider'
+import { LocationData } from '@/lib/location'
 import LocationRequest from '@/components/ui/LocationRequest'
 import { LocationRequestCompact } from '@/components/ui/LocationRequest'
 import ImageService from '@/lib/imageService'
@@ -274,11 +275,13 @@ const SPECIALTIES = [
 
 function ContractorsPageContent() {
   const searchParams = useSearchParams()
-  // Temporarily disable location provider to fix search issues
-  // const { currentLocation, searchLocation, calculateDistance } = useLocation()
-  const currentLocation = null
-  const searchLocation = async () => {}
-  const calculateDistance = () => 0
+  // Re-enable location provider to fix TypeScript errors
+  const { currentLocation, searchLocation, calculateDistance } = useLocation()
+  // const currentLocation: LocationData | null = null
+  // const searchLocation = async (query: string): Promise<LocationData> => {
+  //   throw new Error('Location search temporarily disabled')
+  // }
+  // const calculateDistance = (lat: number, lng: number): number => 0
   
   const [searchTerm, setSearchTerm] = useState('')
   const [locationQuery, setLocationQuery] = useState(searchParams?.get('location') || '')
@@ -407,7 +410,8 @@ function ContractorsPageContent() {
   const handleLocationSearch = async (query: string) => {
     setLocationQuery(query)
     try {
-      await searchLocation(query)
+      const location = await searchLocation(query)
+      console.log('Location search result:', location)
     } catch (error) {
       console.error('Failed to search location:', error)
     }

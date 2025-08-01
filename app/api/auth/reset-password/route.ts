@@ -56,6 +56,13 @@ export async function POST(request: NextRequest) {
       const resetLink = `${process.env.NEXTAUTH_URL || 'http://localhost:3007'}/auth/reset-password?token=${token}`
 
       // Send password reset email
+      if (!user.email) {
+        return NextResponse.json(
+          { error: 'User email not found' },
+          { status: 400 }
+        )
+      }
+
       const emailResult = await sendEmail({
         to: user.email,
         ...emailTemplates.passwordReset(resetLink, user.name || 'User')

@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-import { Upload, Camera, X, Plus, Edit2, Save, Image as ImageIcon } from 'lucide-react'
+import { Upload, Camera, X, Plus, Edit2, Save, Image as ImageIcon, ArrowLeft, Building, Shield, MapPin, DollarSign, Clock } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 interface ContractorProfile {
