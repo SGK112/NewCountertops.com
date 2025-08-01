@@ -6,14 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
-}
-
-enum UserType {
-  CUSTOMER
-  CONTRACTOR
-  ADMIN
 }
 
 model Account {
@@ -51,7 +45,10 @@ model User {
   password      String?   // For custom auth
   emailVerified DateTime?
   image         String?
-  userType      UserType  @default(CUSTOMER)
+  userType      String    @default("CUSTOMER")
+  phone         String?
+  phoneVerified Boolean   @default(false)
+  phoneVerifiedAt DateTime?
   
   accounts      Account[]
   sessions      Session[]
@@ -120,11 +117,17 @@ model Contractor {
   hourlyRate      Float?
   projectMinimum  Float?
   certifications  String?   // JSON string for certifications
+  manufacturers   String?   // JSON string for approved manufacturers
   availableHours  String?   // JSON string for availability
   portfolioImages String?   // JSON string for images
   isVerified      Boolean   @default(false)
+  verified        Boolean   @default(false) // Alias for isVerified for consistency
+  profileComplete Boolean   @default(false)
+  yearsInBusiness Int?      // For scraped data
   rating          Float     @default(0.0)
   reviewCount     Int       @default(0)
+  scrapedFrom     String?   // Source of scraped data
+  lastScraped     DateTime? // When data was last updated
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 

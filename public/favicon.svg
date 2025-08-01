@@ -1,15 +1,37 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- NC Brand Favicon -->
-  <!-- Background circle with brand slate color -->
-  <circle cx="16" cy="16" r="16" fill="#0f172a"/>
+  <defs>
+    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
   
-  <!-- NC Monogram matching navbar design -->
-  <!-- Letter N in white -->
-  <path d="M7 9h2.5v10l4.5-10h2.5v14h-2.5V13l-4.5 10H7V9z" fill="white"/>
+  <!-- Main AI icon -->
+  <rect x="4" y="4" width="24" height="24" rx="6" fill="url(#faviconGradient)"/>
   
-  <!-- Letter C in brand blue -->
-  <path d="M20 16c0-3 2.5-5.5 5.5-5.5v2c-2 0-3.5 1.5-3.5 3.5s1.5 3.5 3.5 3.5v2c-3 0-5.5-2.5-5.5-5.5z" fill="#3b82f6"/>
+  <!-- RE text using same font style -->
+  <text x="16" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="white">
+    RE
+  </text>
   
-  <!-- Subtle border for definition -->
-  <circle cx="16" cy="16" r="15" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <!-- Neural network animation -->
+  <g opacity="0.6">
+    <circle cx="10" cy="10" r="0.5" fill="white">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" begin="0s"/>
+    </circle>
+    <circle cx="22" cy="10" r="0.5" fill="white">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+    </circle>
+    <circle cx="16" cy="22" r="0.5" fill="white">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" begin="1.4s"/>
+    </circle>
+    
+    <!-- Connecting lines -->
+    <line x1="10" y1="10" x2="22" y2="10" stroke="white" stroke-width="0.3" opacity="0.3">
+      <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </line>
+    <line x1="16" y1="10" x2="16" y2="22" stroke="white" stroke-width="0.3" opacity="0.3">
+      <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </line>
+  </g>
 </svg>

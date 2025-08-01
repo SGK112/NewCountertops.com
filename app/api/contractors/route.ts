@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '12')
 
     const where: any = {
-      isVerified: true
+      // Show all contractors, not just verified ones
     }
 
     if (search) {

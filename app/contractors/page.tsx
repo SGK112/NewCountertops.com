@@ -1,8 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, Suspense } from 'react'
 import { Search, MapPin, Star, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { useLocation } from '@/components/providers/LocationProvider'
+import LocationRequest from '@/components/ui/LocationRequest'
+import { LocationRequestCompact } from '@/components/ui/LocationRequest'
+import ImageService from '@/lib/imageService'
 
 interface Contractor {
   id: string
@@ -32,14 +37,14 @@ const MOCK_CONTRACTORS: Contractor[] = [
     reviewCount: 127,
     location: 'Austin, TX',
     distance: '2.3 miles',
-    specialties: ['Kitchen Remodeling', 'Granite Installation', 'Quartz Countertops'],
+    specialties: ['Kitchen Remodeling', 'Bathroom Renovation', 'Countertop Installation'],
     yearsExperience: 15,
-    profileImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    profileImage: '/api/placeholder/150/150',
     portfolioImages: [
-      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=200&fit=crop',
-      'https://images.unsplash.com/photo-1556909114-f3bda3dd4b3f?w=300&h=200&fit=crop'
+      '/api/placeholder/300/200',
+      '/api/placeholder/300/200'
     ],
-    description: 'Specializing in premium granite and quartz installations with over 15 years of experience. Family-owned business committed to quality craftsmanship.',
+    description: 'Specializing in premium kitchen and bathroom remodeling with over 15 years of experience. Family-owned business committed to quality craftsmanship.',
     verified: true,
     phone: '(512) 555-0123',
     website: 'rodriguezgranite.com',
@@ -267,20 +272,118 @@ const SPECIALTIES = [
   'Restoration Services'
 ]
 
-export default function ContractorsPage() {
+function ContractorsPageContent() {
+  const searchParams = useSearchParams()
+  // Temporarily disable location provider to fix search issues
+  // const { currentLocation, searchLocation, calculateDistance } = useLocation()
+  const currentLocation = null
+  const searchLocation = async () => {}
+  const calculateDistance = () => 0
+  
   const [searchTerm, setSearchTerm] = useState('')
-  const [location, setLocation] = useState('Austin, TX')
+  const [locationQuery, setLocationQuery] = useState(searchParams?.get('location') || '')
   const [selectedSpecialties, setSelectedSpecialties] = useState<string[]>([])
   const [priceRange, setPriceRange] = useState('')
   const [rating, setRating] = useState(0)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [showFilters, setShowFilters] = useState(false)
-  const [filteredContractors, setFilteredContractors] = useState(MOCK_CONTRACTORS)
+  const [showLocationRequest, setShowLocationRequest] = useState(true)
+  
+  // State for real vs mock data
+  const [contractors, setContractors] = useState<Contractor[]>([])
+  const [loading, setLoading] = useState(true)
+  const [dataSource, setDataSource] = useState<'mock' | 'database'>('mock')
 
+  // Load real contractors from database
+  const loadRealContractors = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch('/api/contractors?page=1&limit=50')
+      if (response.ok) {
+        const data = await response.json()
+        
+        // Transform database data to match frontend interface
+        const transformedContractors = data.contractors.map((contractor: any) => ({
+          id: contractor.id,
+          name: contractor.user.name,
+          businessName: contractor.businessName,
+          rating: contractor.rating || 4.5,
+          reviewCount: contractor.reviewCount || 0,
+          location: `${contractor.city}, ${contractor.state}`,
+          distance: '0 miles', // Calculate based on user location
+          specialties: JSON.parse(contractor.specialties || '[]'),
+          yearsExperience: contractor.yearsExperience || 5,
+          profileImage: contractor.user.image || ImageService.getRandomProfileImage(),
+          portfolioImages: JSON.parse(contractor.portfolioImages || '[]').length > 0 
+            ? JSON.parse(contractor.portfolioImages || '[]')
+            : ImageService.getRandomProjectImages(3),
+          description: contractor.description || 'Professional contractor services',
+          verified: contractor.isVerified,
+          phone: contractor.phone,
+          website: contractor.website,
+          priceRange: '$$' // Default, could be calculated
+        }))
+        
+        setContractors(transformedContractors)
+        setDataSource('database')
+        console.log(`✅ Loaded ${transformedContractors.length} contractors from database`)
+      } else {
+        throw new Error('Failed to load contractors')
+      }
+    } catch (error) {
+      console.error('Error loading contractors:', error)
+      // Fall back to mock data
+      setContractors(MOCK_CONTRACTORS)
+      setDataSource('mock')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Load data on component mount
   useEffect(() => {
-    let filtered = MOCK_CONTRACTORS.filter(contractor => {
+    loadRealContractors()
+  }, [])
+
+  // Calculate distances and sort contractors based on user location
+  const contractorsWithDistance = useMemo(() => {
+    return contractors.map(contractor => {
+      let distance = contractor.distance // fallback to mock distance
+      let distanceValue = parseFloat(contractor.distance)
+      
+      if (currentLocation) {
+        // Mock coordinates for contractors (in production, these would come from your database)
+        const contractorCoords = {
+          'Austin, TX': { lat: 30.2672, lng: -97.7431 },
+          'Cedar Park, TX': { lat: 30.5052, lng: -97.8203 },
+          'Round Rock, TX': { lat: 30.5083, lng: -97.6789 },
+          'Pflugerville, TX': { lat: 30.4394, lng: -97.6200 },
+          'Georgetown, TX': { lat: 30.6327, lng: -97.6779 }
+        }
+        
+        const coords = contractorCoords[contractor.location as keyof typeof contractorCoords]
+        if (coords) {
+          distanceValue = calculateDistance(coords.lat, coords.lng)
+          distance = `${distanceValue.toFixed(1)} miles`
+        }
+      }
+      
+      return {
+        ...contractor,
+        distance,
+        distanceValue
+      }
+    }).sort((a, b) => a.distanceValue - b.distanceValue)
+  }, [currentLocation, calculateDistance])
+
+  // Filter contractors based on search criteria
+  const filteredContractors = useMemo(() => {
+    return contractorsWithDistance.filter(contractor => {
       const matchesSearch = contractor.businessName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            contractor.specialties.some(s => s.toLowerCase().includes(searchTerm.toLowerCase()))
+      
+      const matchesLocation = !locationQuery || 
+                             contractor.location.toLowerCase().includes(locationQuery.toLowerCase())
       
       const matchesSpecialties = selectedSpecialties.length === 0 || 
                                 selectedSpecialties.some(specialty => contractor.specialties.includes(specialty))
@@ -289,11 +392,9 @@ export default function ContractorsPage() {
       
       const matchesRating = contractor.rating >= rating
 
-      return matchesSearch && matchesSpecialties && matchesPriceRange && matchesRating
+      return matchesSearch && matchesLocation && matchesSpecialties && matchesPriceRange && matchesRating
     })
-
-    setFilteredContractors(filtered)
-  }, [searchTerm, selectedSpecialties, priceRange, rating])
+  }, [contractorsWithDistance, searchTerm, locationQuery, selectedSpecialties, priceRange, rating])
 
   const toggleSpecialty = (specialty: string) => {
     setSelectedSpecialties(prev => 
@@ -303,19 +404,86 @@ export default function ContractorsPage() {
     )
   }
 
+  const handleLocationSearch = async (query: string) => {
+    setLocationQuery(query)
+    try {
+      await searchLocation(query)
+    } catch (error) {
+      console.error('Failed to search location:', error)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Data Source Indicator */}
+      {!loading && (
+        <div className={`${dataSource === 'database' ? 'bg-green-50 border-green-200' : 'bg-yellow-50 border-yellow-200'} border-b`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                {dataSource === 'database' ? (
+                  <>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span className="text-sm text-green-700 font-medium">
+                      ✅ Live Data - {contractors.length} contractors from database
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <span className="text-sm text-yellow-700 font-medium">
+                      🎭 Demo Data - Using sample contractors for demonstration
+                    </span>
+                  </>
+                )}
+              </div>
+              <div className="flex items-center space-x-3">
+                <button
+                  onClick={loadRealContractors}
+                  className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  🔄 Refresh Data
+                </button>
+                <button
+                  onClick={() => {
+                    setSearchTerm('')
+                    setLocationQuery('')
+                    setSelectedSpecialties([])
+                    setPriceRange('')
+                    setRating(0)
+                  }}
+                  className="text-sm bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 font-medium"
+                >
+                  🗑️ Clear Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Find Granite Contractors Near You
+              Find Expert Home Remodeling Contractors Near You
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Connect with verified, experienced contractors and fabricators in your area
+              Connect with verified, experienced contractors and fabricators{' '}
+              {currentLocation ? `in ${currentLocation.city}` : 'in your area'}
             </p>
           </div>
+
+          {/* Location Request - Temporarily disabled to fix search display */}
+          {false && showLocationRequest && !currentLocation && (
+            <div className="max-w-2xl mx-auto mb-6">
+              <LocationRequest 
+                onLocationReceived={() => setShowLocationRequest(false)}
+                onDismiss={() => setShowLocationRequest(false)}
+              />
+            </div>
+          )}
 
           {/* Search Bar */}
           <div className="max-w-4xl mx-auto">
@@ -330,15 +498,24 @@ export default function ContractorsPage() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
-              <div className="relative md:w-64">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="Location"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
+              <div className="flex items-center space-x-2">
+                <div className="relative md:w-64">
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <input
+                    type="text"
+                    placeholder="Enter city, state or zip"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    value={locationQuery}
+                    onChange={(e) => handleLocationSearch(e.target.value)}
+                  />
+                </div>
+                {/* Temporarily disabled LocationRequestCompact */}
+                {false && !currentLocation && (
+                  <LocationRequestCompact 
+                    onLocationReceived={() => {}}
+                    className="whitespace-nowrap"
+                  />
+                )}
               </div>
               <button 
                 onClick={() => setShowFilters(!showFilters)}
@@ -441,7 +618,10 @@ export default function ContractorsPage() {
                 <h2 className="text-2xl font-semibold text-gray-900">
                   {filteredContractors.length} Contractors Found
                 </h2>
-                <p className="text-gray-600">in {location}</p>
+                <p className="text-gray-600">
+                  {currentLocation ? `in ${currentLocation.formattedAddress}` : 
+                   locationQuery ? `in ${locationQuery}` : 'in your area'}
+                </p>
               </div>
               
               <div className="flex items-center space-x-4">
@@ -470,13 +650,20 @@ export default function ContractorsPage() {
             </div>
 
             {/* Contractor Grid/List */}
-            <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 gap-6' : 'space-y-6'}>
-              {filteredContractors.map(contractor => (
-                <ContractorCard key={contractor.id} contractor={contractor} viewMode={viewMode} />
-              ))}
-            </div>
+            {loading ? (
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <p className="text-gray-600">Loading contractors...</p>
+              </div>
+            ) : (
+              <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 gap-6' : 'space-y-6'}>
+                {filteredContractors.map(contractor => (
+                  <ContractorCard key={contractor.id} contractor={contractor} viewMode={viewMode} />
+                ))}
+              </div>
+            )}
 
-            {filteredContractors.length === 0 && (
+            {!loading && filteredContractors.length === 0 && (
               <div className="text-center py-12">
                 <div className="text-gray-400 mb-4">
                   <Search size={64} className="mx-auto" />
@@ -656,5 +843,20 @@ function ContractorCard({ contractor, viewMode }: { contractor: Contractor, view
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ContractorsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading contractors...</p>
+        </div>
+      </div>
+    }>
+      <ContractorsPageContent />
+    </Suspense>
   )
 }

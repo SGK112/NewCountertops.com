@@ -1,7 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Star, Shield, Award } from 'lucide-react'
+import { useLocation } from '@/components/providers/LocationProvider'
 
 export function Footer() {
+  const { getPopularLocations } = useLocation()
+  const popularLocations = getPopularLocations()
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -11,20 +16,19 @@ export function Footer() {
             <div className="flex items-center space-x-3 mb-6">
               {/* Enhanced Footer Logo */}
               <div className="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg flex items-center justify-center shadow-md">
-                {/* Clean "NC" monogram to match navbar */}
+                {/* Clean "RE" monogram to match navbar */}
                 <div className="text-white font-bold text-lg tracking-tight">
-                  <span className="text-white">N</span>
-                  <span className="text-blue-400">C</span>
+                  <span className="text-white">R</span>
+                  <span className="text-blue-400">E</span>
                 </div>
               </div>
               <div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">NewCountertops</span>
-                <span className="text-lg font-semibold text-orange-400">.com</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">REMODELY.AI</span>
               </div>
             </div>
             <p className="text-gray-300 mb-8 max-w-md leading-relaxed text-lg">
-              The premier platform connecting homeowners with certified stone & surface contractors.
-              Professional installations, premium materials, guaranteed satisfaction.
+              The AI-powered platform connecting homeowners with verified home remodeling professionals.
+              Intelligent matching, quality contractors, guaranteed satisfaction.
             </p>
 
             {/* Enhanced Trust Indicators */}
@@ -106,7 +110,7 @@ export function Footer() {
                   <Phone size={18} />
                 </div>
                 <div>
-                  <div className="font-semibold">1-800-STONE-PRO</div>
+                  <div className="font-semibold">1-800-REMODEL</div>
                   <div className="text-sm text-gray-400">24/7 Support</div>
                 </div>
               </div>
@@ -115,7 +119,7 @@ export function Footer() {
                   <Mail size={18} />
                 </div>
                 <div>
-                  <div className="font-semibold">hello@newcountertops.com</div>
+                  <div className="font-semibold">hello@remodely.ai</div>
                   <div className="text-sm text-gray-400">Quick Response</div>
                 </div>
               </div>
@@ -136,14 +140,7 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <h4 className="text-lg font-semibold mb-4 text-center">Popular Locations</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 text-sm">
-            {[
-              'Austin, TX', 'Dallas, TX', 'Houston, TX', 'San Antonio, TX',
-              'Phoenix, AZ', 'Scottsdale, AZ', 'Denver, CO', 'Colorado Springs, CO',
-              'Atlanta, GA', 'Miami, FL', 'Orlando, FL', 'Tampa, FL',
-              'Las Vegas, NV', 'Reno, NV', 'Los Angeles, CA', 'San Diego, CA',
-              'Chicago, IL', 'Nashville, TN', 'Charlotte, NC', 'Raleigh, NC',
-              'Seattle, WA', 'Portland, OR', 'Salt Lake City, UT', 'Boise, ID'
-            ].map((location) => (
+            {popularLocations.map((location) => (
               <Link
                 key={location}
                 href={`/contractors?location=${encodeURIComponent(location)}`}
@@ -157,7 +154,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2025 NewCountertops.com. All rights reserved.
+            © 2025 REMODELY.AI. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">

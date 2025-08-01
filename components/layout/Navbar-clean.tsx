@@ -25,15 +25,15 @@ export function Navbar() {
                     {/* Logo */}
                     <div className="flex items-center">
                         <Link href="/" className="flex-shrink-0 flex items-center space-x-3">
-                            <div className="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg flex items-center justify-center shadow-md">
-                                {/* Clean "NC" monogram */}
+                            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center shadow-md">
+                                {/* Clean "RE" monogram */}
                                 <div className="text-white font-bold text-lg tracking-tight">
-                                    <span className="text-white">N</span>
-                                    <span className="text-blue-400">C</span>
+                                    <span className="text-white">R</span>
+                                    <span className="text-blue-200">E</span>
                                 </div>
                             </div>
                             <span className="font-bold text-xl text-slate-900 hidden sm:block tracking-tight">
-                                NewCountertops
+                                REMODELY<span className="text-blue-600">.AI</span>
                             </span>
                         </Link>
                     </div>                    {/* Desktop Search Bar - Centered */}

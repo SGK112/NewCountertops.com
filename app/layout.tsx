@@ -7,9 +7,9 @@ import { Providers } from './providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'NewCountertops.com - Find Trusted Granite Contractors',
-  description: 'Connect with verified granite contractors and fabricators for your countertop project. Get quotes, compare prices, and book trusted professionals.',
-  keywords: 'granite countertops, contractors, fabricators, kitchen remodel, bathroom countertops',
+  title: 'REMODELY.AI - AI-Powered Home Remodeling Platform',
+  description: 'Connect with verified contractors using AI-powered matching. Get quotes, compare prices, and book trusted remodeling professionals.',
+  keywords: 'home remodeling, AI contractors, kitchen remodel, bathroom renovation, countertops, flooring',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },

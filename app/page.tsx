@@ -30,15 +30,15 @@ export default function HomePage() {
           <div className="text-center">
             {/* Mobile-optimized headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-              Premium <span className="text-gradient">Stone & Surface</span>
+              AI-Powered <span className="text-gradient">Home Remodeling</span>
               <br />
-              <span className="text-stone-600 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">Contractors</span>
+              <span className="text-blue-600 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">Platform</span>
             </h1>
 
             {/* Mobile-first description */}
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
-              Connect with certified professionals specializing in granite, quartz, marble, and premium countertop installations.
-              <span className="block mt-2 font-medium text-stone-700">Expert craftsmanship meets natural beauty.</span>
+              Connect with verified contractors using intelligent matching technology for kitchens, bathrooms, flooring, and complete home renovations.
+              <span className="block mt-2 font-medium text-blue-700">Smart matching meets expert craftsmanship.</span>
             </p>
 
             {/* Mobile-optimized CTA buttons */}
@@ -90,88 +90,70 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Premium Stone Brands Section */}
-      <div className="py-12 sm:py-16 lg:py-20 border-t" style={{
-        background: 'linear-gradient(to bottom, var(--stone-quartz-pearl), var(--stone-marble-beige))',
-        borderColor: 'rgba(212, 175, 55, 0.2)'
-      }}>
+      {/* Trusted Professionals Section */}
+      <div className="py-12 sm:py-16 lg:py-20 border-t bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4" style={{ color: 'var(--stone-granite-dark)' }}>
-              Premium Stone & Surface Partners
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-900">
+              Trusted by Leading Home Improvement Professionals
             </h2>
-            <p className="text-base sm:text-lg max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--stone-granite-medium)' }}>
-              Our certified contractors are authorized dealers for the world's finest stone brands,
-              <span className="block mt-1 font-medium" style={{ color: 'var(--stone-granite-dark)' }}>ensuring authenticity and expert installation</span>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              Our AI-powered platform connects homeowners with vetted contractors across all remodeling categories
             </p>
           </div>
 
-          {/* Placeholder for brand logos - to be added later */}
+          {/* Service Categories */}
           <div className="text-center py-8">
-            <p className="text-lg font-medium text-stone-600 mb-6">Trusted by Leading Surface Manufacturers</p>
+            <p className="text-lg font-medium text-gray-600 mb-6">Expert Contractors Across All Categories</p>
             <div className="flex flex-wrap justify-center gap-3 text-white font-medium">
-              {/* Premium Quartz Brands */}
-              <Link href="/manufacturers/silestone" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Silestone by Cosentino</Link>
-              <Link href="/manufacturers/caesarstone" className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Caesarstone</Link>
-              <Link href="/manufacturers/cambria" className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Cambria</Link>
-              <Link href="/manufacturers/quartz-master" className="px-4 py-2 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartz Master</Link>
+              {/* Home Remodeling Categories */}
+              <div className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-sm">Kitchen Remodeling</div>
+              <div className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-sm">Bathroom Renovation</div>
+              <div className="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg shadow-sm">Flooring Installation</div>
+              <div className="px-4 py-2 bg-gradient-to-r from-slate-600 to-slate-700 rounded-lg shadow-sm">Countertops</div>
               <Link href="/manufacturers/msi-stone" className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">MSI Stone</Link>
               <Link href="/manufacturers/hanstone" className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HanStone Quartz</Link>
               <Link href="/manufacturers/lg-viatera" className="px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">LG Viatera</Link>
               <Link href="/manufacturers/wilsonart-quartz" className="px-4 py-2 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Quartz</Link>
               <Link href="/manufacturers/samsung-radianz" className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Samsung Radianz</Link>
 
-              {/* Ultra-Compact Surfaces */}
-              <Link href="/manufacturers/dekton" className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Dekton by Cosentino</Link>
-              <Link href="/manufacturers/neolith" className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Neolith</Link>
-              <a href="https://www.lapitec.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Lapitec</a>
-
-              {/* Solid Surface */}
-              <Link href="/manufacturers/hi-macs" className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">HI-MACS</Link>
-              <Link href="/manufacturers/corian" className="px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Corian</Link>
-              <Link href="/manufacturers/avonite" className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Avonite</Link>
-              <a href="https://www.staron.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Staron</a>
-
-              {/* Laminate Surfaces */}
-              <Link href="/manufacturers/formica" className="px-4 py-2 bg-gradient-to-r from-yellow-600 to-yellow-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Formica</Link>
-              <a href="https://www.wilsonart.com/laminate" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-lime-600 to-lime-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Wilsonart Laminate</a>
-              <a href="https://www.pionite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-sky-600 to-sky-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Pionite</a>
-              <a href="https://www.arborite.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Arborite</a>
-
-              {/* Additional Premium Brands */}
-              <a href="https://www.quartzforms.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-stone-600 to-stone-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Quartzforms</a>
-              <a href="https://www.vicostone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-zinc-600 to-zinc-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Vicostone</a>
-              <a href="https://www.compac.es" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-neutral-600 to-neutral-700 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Compac</a>
-              <a href="https://www.polarstone.com" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-800 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105">Polarstone</a>
+              <div className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg shadow-sm">Roofing & Siding</div>
+              <div className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg shadow-sm">Electrical</div>
+              <div className="px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 rounded-lg shadow-sm">Plumbing</div>
+              <div className="px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 rounded-lg shadow-sm">HVAC</div>
             </div>
-          </div>          {/* Professional Benefits */}
+          </div>
+
+          {/* Competitive Advantages */}
           <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center card p-6 bg-gradient-to-br from-white to-stone-50">
-              <div className="w-12 h-12 bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <svg className="w-6 h-6" style={{ color: 'var(--stone-accent-copper)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-stone-900 mb-2">Certified Fabricators</h3>
-              <p className="text-stone-600 text-sm leading-relaxed">Factory-trained professionals with direct brand authorization and authentic material access</p>
-            </div>
-            <div className="text-center card p-6 bg-gradient-to-br from-white to-emerald-50">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-stone-900 mb-2">Full Warranties</h3>
-              <p className="text-stone-600 text-sm leading-relaxed">Complete manufacturer warranties on materials plus professional installation guarantees</p>
-            </div>
-            <div className="text-center card p-6 bg-gradient-to-br from-white to-amber-50 sm:col-span-2 lg:col-span-1">
-              <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-amber-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <svg className="w-6 h-6" style={{ color: 'var(--stone-granite-brown)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center card p-6 bg-gradient-to-br from-white to-blue-50">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-stone-900 mb-2">Premium Quality</h3>
-              <p className="text-stone-600 text-sm leading-relaxed">Only the finest grade materials from world-renowned stone manufacturers</p>
+              <h3 className="font-semibold text-gray-900 mb-2">AI-Powered Matching</h3>
+              <p className="text-sm text-gray-600">Smart algorithms match you with the perfect contractor based on your project needs, location, and preferences.</p>
+            </div>
+            
+            <div className="text-center card p-6 bg-gradient-to-br from-white to-green-50">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                </svg>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Pay-As-You-Go Pricing</h3>
+              <p className="text-sm text-gray-600">No monthly fees or hidden costs. Contractors only pay when they get matched with real project leads.</p>
+            </div>
+            
+            <div className="text-center card p-6 bg-gradient-to-br from-white to-purple-50">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Verified Reviews</h3>
+              <p className="text-sm text-gray-600">Real reviews from real customers. Every review is verified to ensure authentic feedback and trustworthy ratings.</p>
             </div>
           </div>
         </div>
@@ -182,7 +164,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-              Professional Stone Installation Process
+              AI-Powered Home Remodeling Process
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Our certified fabricators follow industry best practices for flawless results
@@ -414,7 +396,7 @@ export default function HomePage() {
 
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Ready to Transform Your Space with
+            Ready to Transform Your Space with AI?
             <span className="block text-blue-400">Premium Stone Surfaces?</span>
           </h2>
           <p className="text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">

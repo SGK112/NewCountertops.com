@@ -5,46 +5,39 @@ export const dynamic = 'force-dynamic'
 
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
+import { Upload, Camera, X, Plus, Edit2, Save, Image as ImageIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { 
-  Building, 
-  MapPin, 
-  Phone, 
-  Mail,
-  Globe,
-  Save,
-  ArrowLeft,
-  Award,
-  Shield,
-  Clock,
-  DollarSign,
-  Upload,
-  X
-} from 'lucide-react'
 
 interface ContractorProfile {
   id: string
   businessName: string
-  description?: string
-  specialties?: string[]
-  yearsExperience?: number
-  licenseNumber?: string
-  insuranceInfo?: string
-  phone?: string
-  website?: string
-  address?: string
-  city?: string
-  state?: string
-  zipCode?: string
-  serviceAreas?: string[]
-  hourlyRate?: number
-  projectMinimum?: number
-  availableHours?: {
-    [key: string]: string
+  description: string
+  phone: string
+  website: string
+  address: string
+  city: string
+  state: string
+  zipCode: string
+  specialties: string[]
+  yearsExperience: number
+  licenseNumber: string
+  portfolioImages: string[]
+  user: {
+    name: string
+    email: string
+    image: string
   }
-  certifications?: string[]
-  portfolioImages?: string[]
-  createdAt: string
+}
+
+interface PortfolioItem {
+  id: string
+  title: string
+  description: string
+  projectType: string
+  materials: string[]
+  cost: number
+  images: string[]
+  completedAt: string
 }
 
 export default function ContractorProfilePage() {

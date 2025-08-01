@@ -6,12 +6,14 @@ import { getToken } from 'next-auth/jwt'
 const protectedRoutes = [
   '/dashboard',
   '/profile',
+  '/admin',
   '/api/user',
   '/api/upload',
   '/api/sms',
   '/api/voice',
   '/api/quotes',
-  '/api/contractors/profile'
+  '/api/contractors/profile',
+  '/api/scrape'
 ]
 
 export async function middleware(request: NextRequest) {
@@ -45,26 +47,49 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(loginUrl)
     }
     
-    // Role-based access control
+    // Role-based access control for dashboard routes
     if (pathname.startsWith('/dashboard/contractor') && token.userType !== 'CONTRACTOR') {
-      return NextResponse.json(
-        { error: 'Contractor access required' },
-        { status: 403 }
-      )
+      if (pathname.startsWith('/api/')) {
+        return NextResponse.json(
+          { error: 'Contractor access required' },
+          { status: 403 }
+        )
+      }
+      // Redirect to appropriate dashboard instead of returning JSON
+      return NextResponse.redirect(new URL('/dashboard', request.url))
     }
     
     if (pathname.startsWith('/dashboard/customer') && token.userType !== 'CUSTOMER') {
-      return NextResponse.json(
-        { error: 'Customer access required' },
-        { status: 403 }
-      )
+      if (pathname.startsWith('/api/')) {
+        return NextResponse.json(
+          { error: 'Customer access required' },
+          { status: 403 }
+        )
+      }
+      // Redirect to appropriate dashboard instead of returning JSON
+      return NextResponse.redirect(new URL('/dashboard', request.url))
     }
     
     if (pathname.startsWith('/dashboard/admin') && token.userType !== 'ADMIN') {
-      return NextResponse.json(
-        { error: 'Admin access required' },
-        { status: 403 }
-      )
+      if (pathname.startsWith('/api/')) {
+        return NextResponse.json(
+          { error: 'Admin access required' },
+          { status: 403 }
+        )
+      }
+      // Redirect to appropriate dashboard instead of returning JSON
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+
+    if (pathname.startsWith('/admin') && token.userType !== 'ADMIN') {
+      if (pathname.startsWith('/api/')) {
+        return NextResponse.json(
+          { error: 'Admin access required' },
+          { status: 403 }
+        )
+      }
+      // Redirect to login for admin routes
+      return NextResponse.redirect(new URL('/auth/signin', request.url))
     }
   }
   
@@ -74,9 +99,11 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/dashboard/:path*',
+    '/admin/:path*',
     '/api/quotes/:path*',
     '/api/contractors/:path*',
     '/api/auth/:path*',
+    '/api/scrape',
     '/api/sms',
     '/api/voice'
   ]

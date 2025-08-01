@@ -1,6 +1,15 @@
+'use client'
+
 import Link from 'next/link'
+import { useState } from 'react'
+import { useLocation } from '@/components/providers/LocationProvider'
+import LocationRequest from '@/components/ui/LocationRequest'
+import { LocationRequestCompact } from '@/components/ui/LocationRequest'
 
 export function HeroSection() {
+  const { currentLocation } = useLocation()
+  const [showLocationRequest, setShowLocationRequest] = useState(true)
+
   return (
     <section className="relative bg-gradient-to-br from-blue-50 to-white min-h-screen flex items-center">
       <div className="absolute inset-0 bg-white bg-opacity-50"></div>
@@ -10,21 +19,40 @@ export function HeroSection() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
               Find the Perfect{' '}
               <span className="text-gradient">Granite Contractor</span>{' '}
-              for Your Dream Kitchen
+              {currentLocation ? `in ${currentLocation.city}` : 'for Your Dream Kitchen'}
             </h1>
 
             <p className="text-xl text-gray-600 mb-8 max-w-2xl">
-              Connect with verified, experienced contractors in your area. Get multiple quotes,
+              Connect with verified, experienced contractors{' '}
+              {currentLocation ? `in ${currentLocation.formattedAddress}` : 'in your area'}. Get multiple quotes,
               compare portfolios, and transform your space with confidence.
             </p>
+
+            {/* Location Request */}
+            {showLocationRequest && !currentLocation && (
+              <div className="mb-6">
+                <LocationRequest 
+                  onLocationReceived={() => setShowLocationRequest(false)}
+                  onDismiss={() => setShowLocationRequest(false)}
+                />
+              </div>
+            )}
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <Link href="/quote" className="btn-primary btn-lg">
                 Get Free Quotes
               </Link>
-              <Link href="/contractors" className="btn-outline btn-lg">
-                Browse Contractors
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contractors" className="btn-outline btn-lg">
+                  Browse Contractors
+                </Link>
+                {!currentLocation && (
+                  <LocationRequestCompact 
+                    onLocationReceived={() => {}} 
+                    className="btn-lg"
+                  />
+                )}
+              </div>
             </div>
 
             {/* Stats */}

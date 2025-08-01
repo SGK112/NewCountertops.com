@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { hash } from 'bcryptjs'
 import { resetPasswordSchema, validateInput } from '@/lib/validation'
+import { sendEmail, emailTemplates } from '@/lib/email'
 
 // Store reset tokens in memory (use Redis in production)
 const resetTokens = new Map<string, { email: string; expires: number }>()
@@ -51,14 +52,22 @@ export async function POST(request: NextRequest) {
 
       resetTokens.set(token, { email: email.toLowerCase(), expires })
 
-      // In production, send email with reset link
-      // For now, just log the token (remove in production)
-      console.log(`Password reset token for ${email}: ${token}`)
+      // Create reset link
+      const resetLink = `${process.env.NEXTAUTH_URL || 'http://localhost:3007'}/auth/reset-password?token=${token}`
+
+      // Send password reset email
+      const emailResult = await sendEmail({
+        to: user.email,
+        ...emailTemplates.passwordReset(resetLink, user.name || 'User')
+      })
+
+      if (!emailResult.success) {
+        console.error('Failed to send password reset email:', emailResult.error)
+        // Still return success to prevent email enumeration, but log the error
+      }
 
       return NextResponse.json({ 
-        message: 'If an account with that email exists, we sent a password reset link.',
-        // Remove this in production
-        resetToken: token 
+        message: 'If an account with that email exists, we sent a password reset link.'
       })
 
     } else if (action === 'reset') {

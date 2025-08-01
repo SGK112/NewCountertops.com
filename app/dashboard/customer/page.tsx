@@ -103,7 +103,7 @@ export default function CustomerDashboard() {
               Welcome back, {session?.user?.name}!
             </h1>
             <p className="mt-2 text-gray-600">
-              Manage your countertop projects and connect with contractors
+              Manage your home remodeling projects and connect with AI-matched contractors
             </p>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function CustomerDashboard() {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Find Contractors</h3>
-                <p className="text-gray-600">Browse and compare local contractors</p>
+                <p className="text-gray-600">Browse AI-matched local contractors for your project</p>
               </div>
             </div>
           </Link>
@@ -136,14 +136,14 @@ export default function CustomerDashboard() {
                 <Plus className="h-8 w-8 text-green-600" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">Request Quote</h3>
-                <p className="text-gray-600">Get quotes for your project</p>
+                <h3 className="text-lg font-medium text-gray-900">Get Smart Quote</h3>
+                <p className="text-gray-600">AI-powered quote matching for your project</p>
               </div>
             </div>
           </Link>
 
           <Link
-            href="/dashboard/customer/profile"
+            href="/dashboard/customer/manage"
             className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-200"
           >
             <div className="flex items-center">
@@ -151,8 +151,8 @@ export default function CustomerDashboard() {
                 <User className="h-8 w-8 text-purple-600" />
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">My Profile</h3>
-                <p className="text-gray-600">Manage your personal information</p>
+                <h3 className="text-lg font-medium text-gray-900">Manage Profile</h3>
+                <p className="text-gray-600">Update your profile image & information</p>
               </div>
             </div>
           </Link>

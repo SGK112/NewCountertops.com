@@ -5,15 +5,14 @@ export const registerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').max(50),
   email: z.string().email('Invalid email address'),
   password: z.string()
-    .min(8, 'Password must be at least 8 characters')
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/, 
-           'Password must contain uppercase, lowercase, number and special character'),
+    .min(8, 'Password must be at least 8 characters'),
   userType: z.enum(['CUSTOMER', 'CONTRACTOR']),
   businessName: z.string().optional(),
   serviceArea: z.array(z.string()).optional(),
   specialties: z.array(z.string()).optional(),
   yearsExperience: z.number().min(0).max(50).optional(),
-  phone: z.string().optional()
+  phone: z.string().optional(),
+  phoneVerified: z.boolean().optional()
 })
 
 // Quote creation validation

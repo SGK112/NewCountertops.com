@@ -2,6 +2,7 @@
 
 import { SessionProvider } from 'next-auth/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { LocationProvider } from '@/components/providers/LocationProvider'
 import { useState } from 'react'
 
 export function Providers({ 
@@ -24,7 +25,9 @@ export function Providers({
   return (
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <LocationProvider>
+          {children}
+        </LocationProvider>
       </QueryClientProvider>
     </SessionProvider>
   )

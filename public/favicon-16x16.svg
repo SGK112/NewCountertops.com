@@ -1,15 +1,29 @@
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- NC Brand Favicon 16x16 -->
-  <!-- Background circle with brand slate color -->
-  <circle cx="8" cy="8" r="8" fill="#0f172a"/>
+  <defs>
+    <linearGradient id="favicon16Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
   
-  <!-- NC Monogram - simplified for small size -->
-  <!-- Letter N in white -->
-  <path d="M3 4h1v4l2.5-4h1v6h-1v-4L3.5 10H3V4z" fill="white"/>
+  <!-- Main AI icon -->
+  <rect x="2" y="2" width="12" height="12" rx="3" fill="url(#favicon16Gradient)"/>
   
-  <!-- Letter C in brand blue -->
-  <path d="M9.5 8c0-1.5 1.2-2.5 2.5-2.5v1c-0.8 0-1.5 0.7-1.5 1.5s0.7 1.5 1.5 1.5v1c-1.3 0-2.5-1-2.5-2.5z" fill="#3b82f6"/>
+    <!-- RE text using same font style -->
+  <text x="8" y="11" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="white">
+    RE
+  </text>
   
-  <!-- Subtle border -->
-  <circle cx="8" cy="8" r="7" fill="none" stroke="#1e293b" stroke-width="1"/>
+  <!-- Neural network dots - minimal for 16px -->
+  <g opacity="0.5">
+    <circle cx="5" cy="5" r="0.3" fill="white">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="1.5s" repeatCount="indefinite" begin="0s"/>
+    </circle>
+    <circle cx="11" cy="5" r="0.3" fill="white">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    <circle cx="8" cy="11" r="0.3" fill="white">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="1.5s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
 </svg>

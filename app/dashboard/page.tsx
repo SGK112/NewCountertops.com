@@ -24,6 +24,8 @@ export default function DashboardRedirect() {
             router.push('/dashboard/contractor')
         } else if (session.user.userType === 'CUSTOMER') {
             router.push('/dashboard/customer')
+        } else if (session.user.userType === 'ADMIN') {
+            router.push('/dashboard/admin')
         } else {
             router.push('/dashboard/customer') // Default fallback
         }

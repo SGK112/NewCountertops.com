@@ -24,16 +24,16 @@ export default function ContractorSignUpPage() {
   const router = useRouter()
 
   const specialtyOptions = [
-    'Granite Installation',
-    'Quartz Installation', 
-    'Marble Installation',
-    'Kitchen Countertops',
-    'Bathroom Vanities',
-    'Outdoor Kitchens',
-    'Commercial Projects',
-    'Repair & Restoration',
-    'Custom Fabrication',
-    'Edge Finishing'
+    'Kitchen Remodeling',
+    'Bathroom Renovation', 
+    'Home Additions',
+    'Basement Finishing',
+    'Flooring Installation',
+    'Custom Cabinetry',
+    'Countertop Installation',
+    'Tile & Backsplash',
+    'Painting & Finishing',
+    'General Contracting'
   ]
 
   const handleSpecialtyChange = (specialty: string) => {
@@ -114,7 +114,7 @@ export default function ContractorSignUpPage() {
             Join as a Contractor
           </h2>
           <p className="text-lg text-slate-600 max-w-md mx-auto">
-            Connect with homeowners and grow your stone installation business
+            Connect with homeowners and grow your remodeling business with AI-powered leads
           </p>
         </div>
 

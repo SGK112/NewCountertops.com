@@ -21,26 +21,33 @@ export function Logo({ className = '', width = 200, height = 60, variant = 'full
         <defs>
           <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 1 }} />
-            <stop offset="50%" style={{ stopColor: '#2563eb', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
           </linearGradient>
-          <linearGradient id="iconAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="reGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#f59e0b', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#f97316', stopOpacity: 1 }} />
           </linearGradient>
-          <pattern id="iconTexture" patternUnits="userSpaceOnUse" width="3" height="3">
-            <rect width="3" height="3" fill="#1e40af"/>
-            <circle cx="1" cy="1" r="0.4" fill="#3b82f6" opacity="0.3"/>
-            <circle cx="2.5" cy="2.5" r="0.2" fill="#60a5fa" opacity="0.2"/>
-          </pattern>
         </defs>
         
-        <g transform="translate(6, 6)">
-          <path d="M2 16 L30 15 L30 23 L2 24 Z" fill="url(#iconGradient)" stroke="#1e40af" strokeWidth="0.5"/>
-          <path d="M2 16 L30 15 L30 23 L2 24 Z" fill="url(#iconTexture)" opacity="0.2"/>
-          <path d="M2 24 L30 23 L32 27 L4 28 Z" fill="#1e3a8a" opacity="0.8"/>
-          <path d="M2 16 L30 15 L30 19 L2 20 Z" fill="url(#iconAccent)" opacity="0.1"/>
-          <circle cx="26" cy="17" r="1.2" fill="url(#iconAccent)" opacity="0.6"/>
+        {/* Main RE icon - geometric and modern */}
+        <rect x="6" y="6" width="32" height="32" rx="8" fill="url(#iconGradient)"/>
+        
+        {/* RE text using same font as REMODELY */}
+        <text x="22" y="20" textAnchor="middle" fontFamily="system-ui, -apple-system, sans-serif" fontSize="12" fontWeight="700" fill="white" letterSpacing="-0.02em">
+          RE
+        </text>
+        
+        {/* Animated neural network dots */}
+        <g opacity="0.7">
+          <circle cx="15" cy="15" r="1" fill="white">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0s"/>
+          </circle>
+          <circle cx="29" cy="15" r="1" fill="white">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+          </circle>
+          <circle cx="22" cy="29" r="1" fill="white">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.4s"/>
+          </circle>
         </g>
       </svg>
     )
@@ -49,10 +56,9 @@ export function Logo({ className = '', width = 200, height = 60, variant = 'full
   if (variant === 'text') {
     return (
       <div className={`flex items-center ${className}`}>
-        <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
-          NewCountertops
+        <span className="text-2xl font-bold tracking-tight text-gray-900">
+          REMODELY
         </span>
-        <span className="text-lg font-semibold text-secondary-500">.com</span>
       </div>
     )
   }
@@ -68,42 +74,56 @@ export function Logo({ className = '', width = 200, height = 60, variant = 'full
       className={className}
     >
       <defs>
-        <pattern id="graniteTexture" patternUnits="userSpaceOnUse" width="4" height="4">
-          <rect width="4" height="4" fill="#1e40af"/>
-          <circle cx="1" cy="1" r="0.5" fill="#3b82f6" opacity="0.3"/>
-          <circle cx="3" cy="3" r="0.3" fill="#60a5fa" opacity="0.2"/>
-        </pattern>
         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 1 }} />
-          <stop offset="50%" style={{ stopColor: '#2563eb', stopOpacity: 1 }} />
           <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
         </linearGradient>
-        <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style={{ stopColor: '#f59e0b', stopOpacity: 1 }} />
-          <stop offset="100%" style={{ stopColor: '#f97316', stopOpacity: 1 }} />
+        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 1 }} />
+          <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
         </linearGradient>
       </defs>
       
-      <g transform="translate(8, 8)">
-        <path d="M2 20 L34 18 L34 28 L2 30 Z" fill="url(#logoGradient)" stroke="#1e40af" strokeWidth="0.5"/>
-        <path d="M2 20 L34 18 L34 28 L2 30 Z" fill="url(#graniteTexture)" opacity="0.2"/>
-        <path d="M2 30 L34 28 L36 32 L4 34 Z" fill="#1e3a8a" opacity="0.8"/>
-        <path d="M2 20 L34 18 L34 22 L2 24 Z" fill="url(#accentGradient)" opacity="0.1"/>
-        <circle cx="30" cy="20" r="1.5" fill="url(#accentGradient)" opacity="0.6"/>
+      {/* RE Icon */}
+      <g transform="translate(8, 12)">
+        <rect x="0" y="0" width="36" height="36" rx="8" fill="url(#logoGradient)"/>
+        
+        {/* RE text using same font as REMODELY */}
+        <text x="18" y="24" textAnchor="middle" fontFamily="system-ui, -apple-system, sans-serif" fontSize="14" fontWeight="700" fill="white" letterSpacing="-0.02em">
+          RE
+        </text>
+        
+        {/* Neural network animation */}
+        <g opacity="0.6">
+          <circle cx="12" cy="12" r="1" fill="white">
+            <animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" begin="0s"/>
+          </circle>
+          <circle cx="24" cy="12" r="1" fill="white">
+            <animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" begin="1s"/>
+          </circle>
+          <circle cx="18" cy="24" r="1" fill="white">
+            <animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" begin="2s"/>
+          </circle>
+          
+          {/* Connecting lines */}
+          <line x1="12" y1="12" x2="24" y2="12" stroke="white" strokeWidth="0.5" opacity="0.3">
+            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+          </line>
+          <line x1="18" y1="12" x2="18" y2="24" stroke="white" strokeWidth="0.5" opacity="0.3">
+            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+          </line>
+        </g>
       </g>
       
-      <text x="48" y="25" fontFamily="system-ui, -apple-system, sans-serif" fontSize="18" fontWeight="700" fill="url(#logoGradient)">
-        New
-      </text>
-      <text x="48" y="42" fontFamily="system-ui, -apple-system, sans-serif" fontSize="18" fontWeight="700" fill="url(#logoGradient)">
-        Countertops
-      </text>
-      <text x="168" y="30" fontFamily="system-ui, -apple-system, sans-serif" fontSize="12" fontWeight="600" fill="url(#accentGradient)">
-        .com
+      {/* REMODELY text with AI emphasis */}
+      <text x="56" y="35" fontFamily="system-ui, -apple-system, sans-serif" fontSize="24" fontWeight="700" fill="#111827" letterSpacing="-0.02em">
+        REMODELY
       </text>
       
-      <circle cx="45" cy="48" r="1" fill="url(#accentGradient)" opacity="0.4"/>
-      <circle cx="155" cy="15" r="0.8" fill="url(#accentGradient)" opacity="0.3"/>
+      {/* Powered by AI tagline */}
+      <text x="56" y="48" fontFamily="system-ui, -apple-system, sans-serif" fontSize="10" fontWeight="500" fill="url(#textGradient)" letterSpacing="0.05em">
+        POWERED BY AI
+      </text>
     </svg>
   )
 }

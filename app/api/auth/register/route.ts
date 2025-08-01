@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: validation.error }, { status: 400 })
     }
 
-    const { name, email, password, userType, businessName, serviceArea, specialties, yearsExperience, phone } = validation.data
+    const { name, email, password, userType, businessName, serviceArea, specialties, yearsExperience, phone, phoneVerified } = validation.data
 
     // Check if user already exists
     const exists = await prisma.user.findUnique({
@@ -29,13 +29,16 @@ export async function POST(request: NextRequest) {
     // Hash password
     const hashedPassword = await hash(password, 12)
 
-    // Create user
+    // Create user with phone verification info
     const user = await prisma.user.create({
       data: {
         name,
         email,
         password: hashedPassword,
-        userType: userType || 'CUSTOMER'
+        userType: userType || 'CUSTOMER',
+        phone: phone || null,
+        phoneVerified: phoneVerified || false,
+        phoneVerifiedAt: phoneVerified ? new Date() : null
       }
     })
 
