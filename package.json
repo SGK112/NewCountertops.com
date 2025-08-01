@@ -20,7 +20,10 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "seed:production": "node scripts/seed-production.js",
+    "import:contractors": "node scripts/import-production-contractors.js",
+    "deploy:full": "npm run db:push && npm run seed:production && npm run import:contractors"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
